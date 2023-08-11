@@ -6,7 +6,31 @@ const { main } = require('../src/blynk-pi');
 dotenv.config();
 
 const options = yargs
-  .usage('Usage: [-i] [-c] [-ipin] [-spin]')
+  .usage('Usage: [-u username] [-p password] [-h host] [-t port] | [-i] [-c] [-s] [-g]')
+  .option('u', {
+    alias: 'username',
+    describe: 'username',
+    type: 'string',
+    demandOption: false,
+  })
+  .option('p', {
+    alias: 'password',
+    describe: 'password',
+    type: 'string',
+    demandOption: false,
+  })
+  .option('h', {
+    alias: 'host',
+    describe: 'host',
+    type: 'string',
+    demandOption: false,
+  })
+  .option('t', {
+    alias: 'port',
+    describe: 'port',
+    type: 'int',
+    demandOption: false,
+  })
   .option('i', {
     alias: 'info',
     describe: 'information about this node',

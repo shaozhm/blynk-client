@@ -1,0 +1,107 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            9f:39:3f:7f:ea:26:d0:b9:52:e7:55:ea:90:06:f9:1c
+    Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=CN, O=zhimin, CN=Sub CA
+        Validity
+            Not Before: Apr 10 10:56:42 2023 GMT
+            Not After : Apr  9 10:56:42 2024 GMT
+        Subject: C=CN, ST=Shanghai, O=zhimin, OU=home, CN=sonospi.z.com/emailAddress=shaozhm@gmail.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (1024 bit)
+                Modulus:
+                    00:c4:88:de:e5:5c:87:88:81:13:ad:b6:2c:18:65:
+                    40:60:7f:b3:8a:72:74:6d:73:b3:25:15:2f:a2:94:
+                    cf:9f:54:46:d7:cb:94:16:d6:92:b7:a3:91:8b:84:
+                    e0:a0:b1:01:52:da:07:98:69:bc:a5:d9:0c:5d:d3:
+                    87:9a:16:9e:20:db:3b:06:bc:16:e8:9a:ce:58:7e:
+                    ee:35:eb:dc:c1:25:6f:a3:6b:25:d1:73:21:de:2b:
+                    c5:8d:a9:c0:63:4d:54:e2:ce:c4:9f:e8:a8:51:7c:
+                    90:9e:11:cb:e0:8f:b6:d8:2f:73:e3:1f:a1:8f:c9:
+                    9f:a9:af:c1:0d:43:e7:18:8f
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            Authority Information Access: 
+                CA Issuers - URI:http://sub-ca.z.com/sub-ca.crt
+                OCSP - URI:http://sub-ca.z.com:9080
+
+            X509v3 Authority Key Identifier: 
+                keyid:6D:8E:A4:8E:F4:9E:08:90:28:83:17:C5:11:EC:7E:D8:0B:45:FD:37
+
+            X509v3 Basic Constraints: critical
+                CA:FALSE
+            X509v3 CRL Distribution Points: 
+
+                Full Name:
+                  URI:http://sub-ca.z.com/sub-ca.crl
+
+            X509v3 Extended Key Usage: 
+                TLS Web Client Authentication, TLS Web Server Authentication
+            X509v3 Key Usage: critical
+                Digital Signature, Key Encipherment
+            X509v3 Subject Key Identifier: 
+                79:7B:C4:6B:29:A3:5D:15:26:8A:6B:25:D4:B7:7A:D6:DB:65:78:4F
+            X509v3 Subject Alternative Name: 
+                DNS:sonospi.z.com
+    Signature Algorithm: sha256WithRSAEncryption
+         dd:6b:b9:77:27:63:22:72:f2:88:06:10:08:c8:bd:8b:0b:f8:
+         ef:49:25:72:c4:f1:1b:a7:b1:43:64:ac:b9:aa:98:67:a0:4c:
+         20:f0:0d:e4:41:f8:b7:39:78:74:2b:e4:39:47:2f:ae:f2:cf:
+         ee:90:ed:40:b7:de:8d:13:05:6e:3a:bf:7c:3c:ee:ae:d2:73:
+         21:e5:b2:72:c3:7c:31:67:d9:9e:40:8e:a8:5c:01:50:cc:d3:
+         5f:5b:12:a3:02:37:ab:fe:a8:4b:94:63:cd:69:c1:3a:51:e3:
+         46:19:78:6c:9c:59:c9:20:83:62:3f:82:6d:0b:e2:0b:f4:63:
+         0a:91:5a:b2:ab:b7:ce:14:f9:d9:16:7f:91:f6:54:d2:5c:a3:
+         4c:2d:d2:0d:7f:d2:35:ef:86:aa:4e:1d:01:32:2c:26:4e:d2:
+         03:be:ed:ee:07:38:07:1c:ca:bc:41:5e:a0:f1:99:10:50:8f:
+         39:b6:d6:a9:3a:c3:93:22:b8:90:e2:0b:1d:eb:5a:34:e4:72:
+         e7:a7:46:43:75:e8:b4:b0:a9:98:94:91:f7:9c:37:e4:6d:ba:
+         ec:84:58:88:eb:28:bf:e2:e4:4c:e3:af:96:bb:e7:91:37:1f:
+         5f:89:21:1e:5b:53:ee:ee:1f:52:65:91:41:ba:f6:25:5d:ee:
+         4a:7a:61:08:c4:af:8c:05:45:68:d4:ce:04:60:a0:ff:0f:4f:
+         2d:49:c2:30:f4:c5:10:ca:bf:c7:15:e5:54:54:2e:08:8e:d7:
+         84:21:9f:67:60:78:4f:f7:8e:65:85:60:44:09:63:82:63:d7:
+         f1:3f:28:54:4d:58:46:d0:4b:5f:32:92:98:f1:e3:ca:2b:ab:
+         5a:ec:b7:44:17:7f:4b:ee:47:0d:59:c0:04:b8:07:38:fb:ad:
+         75:2e:cf:a3:11:cc:e6:53:dc:9f:9c:10:12:3e:98:58:37:75:
+         b5:c0:f8:a0:23:1b:2c:5e:97:b5:ec:b3:90:e7:1e:a1:18:9a:
+         22:6b:2d:07:20:f3:4b:f1:83:35:d7:7b:e5:f5:4f:53:46:b6:
+         11:5d:e3:62:b4:d7:79:08:8a:3a:9a:3e:d6:70:12:d2:1b:35:
+         f0:82:0e:fc:34:47:89:01:10:52:27:84:f1:e5:f0:a8:76:ec:
+         11:22:e1:79:20:b3:fe:a7:ea:53:1a:35:78:f3:a7:ae:a7:a0:
+         49:53:d6:55:bd:97:7a:a8:14:65:67:58:35:40:c6:84:b7:ae:
+         65:a5:f8:d0:b0:99:37:ad:67:8e:5f:51:b2:bd:6e:36:e1:42:
+         7c:e5:f1:39:a1:82:88:07:c7:43:54:29:98:9b:2d:b4:22:b1:
+         ac:01:4c:93:a0:66:b0:60
+-----BEGIN CERTIFICATE-----
+MIIE4DCCAsigAwIBAgIRAJ85P3/qJtC5UudV6pAG+RwwDQYJKoZIhvcNAQELBQAw
+LzELMAkGA1UEBhMCQ04xDzANBgNVBAoMBnpoaW1pbjEPMA0GA1UEAwwGU3ViIENB
+MB4XDTIzMDQxMDEwNTY0MloXDTI0MDQwOTEwNTY0MlowejELMAkGA1UEBhMCQ04x
+ETAPBgNVBAgMCFNoYW5naGFpMQ8wDQYDVQQKDAZ6aGltaW4xDTALBgNVBAsMBGhv
+bWUxFjAUBgNVBAMMDXNvbm9zcGkuei5jb20xIDAeBgkqhkiG9w0BCQEWEXNoYW96
+aG1AZ21haWwuY29tMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDEiN7lXIeI
+gROttiwYZUBgf7OKcnRtc7MlFS+ilM+fVEbXy5QW1pK3o5GLhOCgsQFS2geYabyl
+2Qxd04eaFp4g2zsGvBboms5Yfu4169zBJW+jayXRcyHeK8WNqcBjTVTizsSf6KhR
+fJCeEcvgj7bYL3PjH6GPyZ+pr8ENQ+cYjwIDAQABo4IBLjCCASowYAYIKwYBBQUH
+AQEEVDBSMCoGCCsGAQUFBzAChh5odHRwOi8vc3ViLWNhLnouY29tL3N1Yi1jYS5j
+cnQwJAYIKwYBBQUHMAGGGGh0dHA6Ly9zdWItY2Euei5jb206OTA4MDAfBgNVHSME
+GDAWgBRtjqSO9J4IkCiDF8UR7H7YC0X9NzAMBgNVHRMBAf8EAjAAMC8GA1UdHwQo
+MCYwJKAioCCGHmh0dHA6Ly9zdWItY2Euei5jb20vc3ViLWNhLmNybDAdBgNVHSUE
+FjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwDgYDVR0PAQH/BAQDAgWgMB0GA1UdDgQW
+BBR5e8RrKaNdFSaKayXUt3rW22V4TzAYBgNVHREEETAPgg1zb25vc3BpLnouY29t
+MA0GCSqGSIb3DQEBCwUAA4ICAQDda7l3J2MicvKIBhAIyL2LC/jvSSVyxPEbp7FD
+ZKy5qphnoEwg8A3kQfi3OXh0K+Q5Ry+u8s/ukO1At96NEwVuOr98PO6u0nMh5bJy
+w3wxZ9meQI6oXAFQzNNfWxKjAjer/qhLlGPNacE6UeNGGXhsnFnJIINiP4JtC+IL
+9GMKkVqyq7fOFPnZFn+R9lTSXKNMLdINf9I174aqTh0BMiwmTtIDvu3uBzgHHMq8
+QV6g8ZkQUI85ttapOsOTIriQ4gsd61o05HLnp0ZDdei0sKmYlJH3nDfkbbrshFiI
+6yi/4uRM46+Wu+eRNx9fiSEeW1Pu7h9SZZFBuvYlXe5KemEIxK+MBUVo1M4EYKD/
+D08tScIw9MUQyr/HFeVUVC4IjteEIZ9nYHhP945lhWBECWOCY9fxPyhUTVhG0Etf
+MpKY8ePKK6ta7LdEF39L7kcNWcAEuAc4+611Ls+jEczmU9yfnBASPphYN3W1wPig
+IxssXpe17LOQ5x6hGJoiay0HIPNL8YM113vl9U9TRrYRXeNitNd5CIo6mj7WcBLS
+GzXwgg78NEeJARBSJ4Tx5fCoduwRIuF5ILP+p+pTGjV486eup6BJU9ZVvZd6qBRl
+Z1g1QMaEt65lpfjQsJk3rWeOX1GyvW424UJ85fE5oYKIB8dDVCmYmy20IrGsAUyT
+oGawYA==
+-----END CERTIFICATE-----
