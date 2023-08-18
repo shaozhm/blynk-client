@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "run",
+      "name": "test - register",
       "type": "node",
       "cwd": "${workspaceFolder}",
       "request": "launch",
@@ -14,12 +14,13 @@
       "runtimeArgs": [
         "--inspect-brk",
         ".",
+        "register",
         "-u",
         "new@blynk.cc",
         "-p",
         "new",
         "-h",
-        "sonospi.z.com",
+        "localhost",
         "-t",
         "9443",
       ],

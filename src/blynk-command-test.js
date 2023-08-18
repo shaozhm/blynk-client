@@ -5,10 +5,6 @@ const Fs = require('fs');
 const Path = require('path');
 
 const {
-  read,
-} = require('./yaml');
-
-const {
   createProject,
   deleteProject,
   updateProjectSettings,
@@ -30,27 +26,52 @@ const {
   client,
 } = require('./commands');
 
-const DEFAULT_CONFIGFILE = 'blynk-config.yaml';
+const registerCommand = (options) => {
+  const username = options.u;
+  const password = options.p;
+  const host = options.h;
+  const port = options.t;
 
-const main = (options) => {
+  if (username && password && host && port) {
+    const blynk = client(host, port);
+    //if we want to register a new user, and then login.
+    const registerCallback = (username, password, appName) => {
+      register.commandOnly(blynk, username, password, appName);
+    };
+
+    const appname = 'Blynk';
+    connect(blynk, registerCallback, username, password, appname)
+    .then((status) => {
+      console.log(`[${status}]: successfully`)	
+    })
+    .catch((error) => {
+      console.error(error);
+    })
+    .finally(() => {
+      if (blynk && blynk.socket) {
+        blynk.socket.destroy();
+      }
+    })
+  }
+};
+
+const loginCommand = (options) => {
   const username = options.u;
   const password = options.p;
   const host = options.h;
   const port = options.t;
   if (username && password && host && port) {
     const blynk = client(host, port);
-    const callback = (username, password, appName) => {
-      // register.commandOnly(blynk, username, password, appName);
+    const loginCallback = (username, password, appName) => {
       login.commandOnly(blynk, username, password);
-    }
-    connect(blynk, callback, username, password, 'Blynk')
-    // .then((status) => {
-    //   return login.command(blynk, username, password);	
-    // })
+    };
+    const appname = 'blynk';
+    connect(blynk, loginCallback, username, password, appname)
     .then((status) => {
       return deleteProject.command(blynk, 102);	
     })
     .then((status) => {
+      // create a new project
       const isShared = false;
       const keepScreenOn = false;
       const theme = 'Blynk';
@@ -60,6 +81,7 @@ const main = (options) => {
       return createProject.command(blynk, 102, 'DashTest', isShared, keepScreenOn, theme, isAppConnectedOn, isNotificationsOff, widgetBackgroundOn, 1555, 'S1', BoardType.ESP8266, ConnectionType.WI_FI);	
     })
     .then((status) => {
+      //
       return createDevice.command(blynk, 102, 1562, 'T1', BoardType.NodeMCU, ConnectionType.WI_FI);	
     })
     .then((status) => {
@@ -103,8 +125,6 @@ const main = (options) => {
       const dashboardId = 102;
       const widgetId = 1;
       return getWidget.command(blynk, dashboardId, widgetId);
-
-      
     })
     .then((data) => {
       const widget = JSON.parse(data);
@@ -118,95 +138,19 @@ const main = (options) => {
     .catch((error) => {
       console.log("Error: " + error);
       process.exit();
+    })
+    .finally(() => {
+      if (blynk && blynk.socket) {
+        blynk.socket.destroy();
+      }
     });
     return;
-  }
-  const hostName = os.hostname();
-  const userHomeDir = os.homedir();
-  const userInfo = os.userInfo();
-  
-  let configPath = Path.join(userHomeDir, DEFAULT_CONFIGFILE);
-  if (!Fs.existsSync(configPath) && userInfo.username !== 'pi') {
-    configPath = Path.join('/home/pi', DEFAULT_CONFIGFILE);
-  }
-  if (!Fs.existsSync(configPath)) {
-    console.error(`The ${DEFAULT_CONFIGFILE} file doesn't exist in ${userHomeDir} or '/home/pi'`);
-    return;
-  }
-
-  const Config = read(configPath);
-
-  const {
-    controller,
-  } = Config;
-
-  if (options.c) {
-    console.log(controller);
-    return;
-  }
-  if (options.g) {
-    process.stdout.write(`${controller[0][options.g]}`);
-    return;
-  }
-
-  const idleTime = controller[0]['idle-timeout'];
-  const shutdownVPIN = controller[0]['shutdown-virtual-pin'];
-
-  const modules = Lodash.filter(Config.modules, (m) => m.name === hostName);
-  if (modules && Array.isArray(modules) && modules.length) {
-    if (options.i) {
-      console.log(modules);
-      return;
-    }
-    if (options.s) {
-      process.stdout.write(`${modules[0][options.s]}`);
-      return;
-    }
-
-    const piToken = modules[0]['pi-token'];
-    const ildleVPIN = modules[0]['idle-counter-pin'];
-    if (piToken && ildleVPIN) {
-
-      const exec = require('child_process').exec;
-
-      const execute = (command, callback) => {
-        exec(command, (error, stdout, stderr) => callback(stdout));
-      };
-
-      const blynk = new Blynk.Blynk(piToken, options = {
-        connector : new Blynk.TcpClient( options = { addr: controller[0].address, port: controller[0].port })
-      });
-      const bridge = new blynk.WidgetBridge(64);
-
-      blynk.on('connect', () => {
-        bridge.setAuthToken(controller[0].token);
-        bridge.virtualWrite(ildleVPIN, 1);
-        execute(`sudo /usr/sbin/shutdown +${idleTime/1000/60}`, (callback) => {
-          console.log(callback);
-        });
-      });
-
-      const switchPin = new blynk.VirtualPin(shutdownVPIN);
-      
-      switchPin.on('write', (param) => {
-        const input = parseInt(param[0]);
-        if (input === 0) {
-          // reference to: https://stackoverflow.com/questions/23032149/how-do-i-reboot-linux-from-nodejs
-          // require('child_process').exec('sudo /sbin/shutdown -r now', function (msg) {
-          //   console.log(msg)
-          // });
-          execute('sudo /sbin/poweroff', (callback) => {
-            console.log(callback);
-          });
-        }
-      });
-
-    }
   }
 };
 
 const exportFunctions = {
-  main,
+  registerCommand,
+  loginCommand,
 };
 
 module.exports = exportFunctions;
