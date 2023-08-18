@@ -103,10 +103,10 @@ const connect = (client, callback, username, password, appName) => {
 						data.copy(buf, 0, 5);
 						zlib.unzip(buf, (err, buffer) => {
 								if (!err) {
-								var resp = buffer.toString('utf8');
-								r.resolve(resp);
+									var resp = buffer.toString('utf8');
+									r.resolve(resp);
 								} else {
-								r.reject(err);
+									r.reject(err);
 								}
 						});
 						clearTimeout(r.timeout);

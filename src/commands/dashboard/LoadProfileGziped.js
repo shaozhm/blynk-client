@@ -9,10 +9,8 @@ const COMMAND_LABEL = 'LOAD_PROFILE_GZIPPED';
 const COMMAND_NAME = 'LoadProfile';
 const IS_APP_COMMAND = true;
 
-const command = (client, ) => {
-
-
-	const command = `${COMMAND_NAME}`;
+const command = (client) => {
+	const command = `${COMMAND_NAME} `;
 	return new Promise((resolve, reject) => {
 		var msgId = client.msgId;
 		client.respPromises.set(msgId, {

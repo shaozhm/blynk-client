@@ -31,104 +31,6 @@ const {
   client,
 } = require('./commands');
 
-const registerCommand = (options) => {
-  const username = options.u;
-  const password = options.p;
-  const host = options.h;
-  const port = options.t;
-
-  if (username && password && host && port) {
-    const blynk = client(host, port);
-    //if we want to register a new user, and then login.
-    const registerCallback = (username, password, appName) => {
-      register.commandOnly(blynk, username, password, appName);
-    };
-
-    const appname = 'Blynk';
-    connect(blynk, registerCallback, username, password, appname)
-    .then((status) => {
-      console.log(`[${status}]: successfully`)	
-    })
-    .catch((error) => {
-      console.error(error);
-    })
-    .finally(() => {
-      if (blynk && blynk.socket) {
-        blynk.socket.destroy();
-      }
-    })
-  }
-};
-
-const loginCommand = (options) => {
-  console.debug(options);
-  const {
-    username,
-    password,
-    host,
-    port,
-    appname,
-  } = options;
-  if (username && password && host && port) {
-    const blynk = client(host, port);
-    const loginCallback = (username, password, appName) => {
-      login.commandOnly(blynk, username, password);
-    };
-    connect(blynk, loginCallback, username, password, appname)
-    .then((status) => {
-      const dotenv = {
-        username,
-        password,
-        host,
-        port,
-        appname,
-      };
-      fs.writeFileSync('./.env', envfile.stringify(dotenv));
-    })
-    .catch((error) => {
-      console.error(error);
-    })
-    .finally(() => {
-      if (blynk && blynk.socket) {
-        blynk.socket.destroy();
-      }
-    });
-  }
-};
-
-const createDashCommand = (options) => {
-  console.debug(options);
-  const {
-    username,
-    password,
-    host,
-    port,
-    appname,
-  } = process.env;
-  if (username && password && host && port) {
-    console.debug(username, password, host, port, appname);
-    const blynk = client(host, port);
-    const loginCallback = (username, password, appName) => {
-      login.commandOnly(blynk, username, password);
-    };
-    connect(blynk, loginCallback, username, password, appname)
-    .then((status) => {
-      return createProject.command(blynk, options);	
-    })
-    .then((status) => {
-      console.log(status);
-    })
-    .catch((error) => {
-      console.error(error);
-    })
-    .finally(() => {
-      if (blynk && blynk.socket) {
-        blynk.socket.destroy();
-      }
-    });
-  }
-};
-
 const main = (options) => {
   const username = options.u;
   const password = options.p;
@@ -145,7 +47,7 @@ const main = (options) => {
       return deleteProject.command(blynk, 102);	
     })
     .then((status) => {
-      // create a new projectå
+      // create a new project
       const isShared = false;
       const keepScreenOn = false;
       const theme = 'Blynk';
@@ -177,7 +79,10 @@ const main = (options) => {
     .then((data) => {
       const newDevice = JSON.parse(data);
       console.log('New Device: ', newDevice);
-
+      return loadProfileGzipped.command(blynk);
+    })
+    .then((data) => {
+      console.log('Profile: ',data);
       return getDevice.command(blynk, 102, 1562);
     })
     .then((data) => {
@@ -231,9 +136,6 @@ const main = (options) => {
 };
 
 const exportFunctions = {
-  registerCommand,
-  loginCommand,
-  createDashCommand,
   main,
 };
 

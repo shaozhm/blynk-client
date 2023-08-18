@@ -17,6 +17,7 @@ const {
   activateDashboard,
   deactivateDashboard,
   updateProjectSettings,
+  loadProfileGzipped,
 } = require('./dashboard');
 
 const {
@@ -52,16 +53,20 @@ const {
 } = require('./Register');
 
 const commands = Lodash.keyBy([
+  //device
   createDevice,
   deleteDevice,
   getDevice,
   updateDevice,
   getDevices,
+  //dashboard
   createProject,
   deleteProject,
   activateDashboard,
   deactivateDashboard,
+  loadProfileGzipped,
   updateProjectSettings,
+  //widget
   createWidget,
   getWidget,
   deleteWidget,
@@ -75,6 +80,7 @@ const commands = Lodash.keyBy([
 ], 'name');
 
 const exportFunctions = {
+  //device
   BoardType,
   ConnectionType,
   createDevice,
@@ -83,11 +89,14 @@ const exportFunctions = {
   updateDevice,
   getDevices,
   refreshToken,
+  //dashboard
   createProject,
   deleteProject,
   activateDashboard,
   deactivateDashboard,
+  loadProfileGzipped,
   updateProjectSettings,
+  //widget
   createWidget,
   getWidget,
   deleteWidget,
