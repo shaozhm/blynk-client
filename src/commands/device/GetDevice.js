@@ -8,8 +8,11 @@ const COMMAND_NAME = 'GetDevice';
 const COMMAND_LABEL = 'MOBILE_GET_DEVICE';
 const IS_APP_COMMAND = true;
 
-const command = (client, dashboardId, deviceId) => {
-	const command = `${COMMAND_NAME} ${dashboardId}\0${deviceId}`;
+const command = (client, {
+	dashId, 
+	deviceId,
+}) => {
+	const command = `${COMMAND_NAME} ${dashId}\0${deviceId}`;
 	return new Promise((resolve, reject) => {
 		const {
       msgId,

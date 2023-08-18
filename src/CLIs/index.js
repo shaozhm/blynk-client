@@ -23,6 +23,16 @@ const {
   command: getDevicesCommand,
 } = require('./get-devices');
 
+const {
+  commandOptions: getDeviceOptions,
+  command: getDeviceCommand,
+} = require('./get-device');
+
+const {
+  commandOptions: refreshTokenOptions,
+  command: refreshTokenCommand,
+} = require('./refresh-token');
+
 const exportFunctions = {
   registerOptions,
   registerCommand,
@@ -34,6 +44,10 @@ const exportFunctions = {
   loadProfileCommand,
   getDevicesOptions,
   getDevicesCommand,
+  getDeviceOptions,
+  getDeviceCommand,
+  refreshTokenOptions,
+  refreshTokenCommand,
 };
 
 module.exports = exportFunctions;

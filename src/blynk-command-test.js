@@ -79,11 +79,10 @@ const main = (options) => {
     .then((data) => {
       const newDevice = JSON.parse(data);
       console.log('New Device: ', newDevice);
-      return loadProfileGzipped.command(blynk);
-    })
-    .then((data) => {
-      console.log('Profile: ',data);
-      return getDevice.command(blynk, 102, 1562);
+      return getDevice.command(blynk, {
+        dashId: 102,
+        deviceId: 1562,
+      });
     })
     .then((data) => {
       const device = JSON.parse(data);

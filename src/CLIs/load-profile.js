@@ -7,7 +7,7 @@ const {
 
 const commandOptions = {
   dashId: {
-    alias: 'd',
+    alias: 'p',
     describe: 'dashboard ID',
     type: 'int',
     demandOption: false,

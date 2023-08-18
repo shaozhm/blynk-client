@@ -14,6 +14,10 @@ const {
   loadProfileCommand,
   getDevicesOptions,
   getDevicesCommand,
+  getDeviceOptions,
+  getDeviceCommand,
+  refreshTokenOptions,
+  refreshTokenCommand,
 } = require('../src/CLIs');
 
 dotenv.config();
@@ -47,6 +51,16 @@ const commands = yargs
   }, (options) => {
     getDevicesCommand(options);
   })
+  .command('get-device', 'see a specific device in a specific dashboard', (yargs) => {
+    yargs.options(getDeviceOptions)
+  }, (options) => {
+    getDeviceCommand(options);
+  })
+  .command('refresh-token', 'refresh a token of a specific device in a specific dashboard', (yargs) => {
+    yargs.options(refreshTokenOptions)
+  }, (options) => {
+    refreshTokenCommand(options);
+  }) 
   .command('test', 'testing', loginOptions, (options) => {
     main(options);
   }).argv;

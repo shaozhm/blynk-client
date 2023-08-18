@@ -1,5 +1,5 @@
 const {
-  getDevices,
+  refreshToken,
   connect,
   login,
   client,
@@ -11,7 +11,13 @@ const commandOptions = {
     describe: 'dashboard ID',
     type: 'int',
     demandOption: true,
-  }
+  },
+  deviceId: {
+    alias: 'd',
+    describe: 'device ID',
+    type: 'int',
+    demandOption: true,  
+  },
 }
 
 const command = (options) => {
@@ -31,11 +37,10 @@ const command = (options) => {
     };
     connect(blynk, loginCallback, username, password, appname)
     .then((status) => {
-      return getDevices.command(blynk, options);	
+      return refreshToken.command(blynk, options);	
     })
     .then((data) => {
-      const devices = JSON.parse(data);
-      console.log('Get Devices: ', devices);
+      console.log('Device Token: ', data);
     })
     .catch((error) => {
       console.error(error);
