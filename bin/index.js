@@ -10,6 +10,8 @@ const {
   loginCommand,
   createDashOptions,
   createDashCommand,
+  loadProfileOptions,
+  loadProfileCommand,
 } = require('../src/CLIs');
 
 dotenv.config();
@@ -32,6 +34,11 @@ const commands = yargs
     yargs.options(createDashOptions)
   }, (options) => {
     createDashCommand(options);
+  })
+  .command('load-profile', 'load profile', (yargs) => {
+    yargs.options(loadProfileOptions)
+  }, (options) => {
+    loadProfileCommand(options);
   })
   .command('test', 'testing', loginOptions, (options) => {
     main(options);

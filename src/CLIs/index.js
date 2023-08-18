@@ -13,6 +13,11 @@ const {
   command: createDashCommand,
 } = require('./create-dash');
 
+const {
+  commandOptions: loadProfileOptions,
+  command: loadProfileCommand,
+} = require('./load-profile');
+
 const exportFunctions = {
   registerOptions,
   registerCommand,
@@ -20,6 +25,8 @@ const exportFunctions = {
   loginCommand,
   createDashOptions,
   createDashCommand,
+  loadProfileOptions,
+  loadProfileCommand,
 };
 
 module.exports = exportFunctions;
