@@ -8,7 +8,20 @@ const COMMAND_NAME = 'CreateProject';
 const COMMAND_LABEL = 'CREATE_DASH';
 const IS_APP_COMMAND = true;
 
-const command = (client, dashboardId, projectName, isShared, keepScreenOn, theme, isAppConnectedOn, isNotificationsOff, widgetBackgroundOn, deviceId, deviceName, boardType, connectionType, ) => {
+const command = (client, {
+	id: dashboardId,
+	projectName,
+	isShared,
+	keepScreenOn,
+	theme,
+	isAppConnectedOn,
+	isNotificationsOff,
+	widgetBackgroundOn,
+	deviceId,
+	deviceName,
+	boardType,
+	connectionType,
+}) => {
 	const projectObj = {
 		id: dashboardId,
 		name: projectName,
@@ -35,6 +48,7 @@ const command = (client, dashboardId, projectName, isShared, keepScreenOn, theme
 		isNotificationsOff,
 	}
 
+	console.debug(projectObj);
 	const command = `${COMMAND_NAME} ${JSON.stringify(projectObj)}`;
 	return new Promise((resolve, reject) => {
 		var msgId = client.msgId;

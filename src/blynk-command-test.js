@@ -3,12 +3,16 @@ const Lodash = require('lodash');
 const os = require("os");
 const fs = require('fs');
 const Path = require('path');
+const {
+  v4: uuidv4
+} = require('uuid');
 const envfile = require('envfile');
 
 const {
   createProject,
   deleteProject,
   updateProjectSettings,
+  loadProfileGzipped,
   BoardType,
   ConnectionType,
   createDevice,
@@ -57,7 +61,7 @@ const registerCommand = (options) => {
 };
 
 const loginCommand = (options) => {
-  console.log(options);
+  console.debug(options);
   const {
     username,
     password,
@@ -92,6 +96,39 @@ const loginCommand = (options) => {
   }
 };
 
+const createDashCommand = (options) => {
+  console.debug(options);
+  const {
+    username,
+    password,
+    host,
+    port,
+    appname,
+  } = process.env;
+  if (username && password && host && port) {
+    console.debug(username, password, host, port, appname);
+    const blynk = client(host, port);
+    const loginCallback = (username, password, appName) => {
+      login.commandOnly(blynk, username, password);
+    };
+    connect(blynk, loginCallback, username, password, appname)
+    .then((status) => {
+      return createProject.command(blynk, options);	
+    })
+    .then((status) => {
+      console.log(status);
+    })
+    .catch((error) => {
+      console.error(error);
+    })
+    .finally(() => {
+      if (blynk && blynk.socket) {
+        blynk.socket.destroy();
+      }
+    });
+  }
+};
+
 const main = (options) => {
   const username = options.u;
   const password = options.p;
@@ -108,14 +145,27 @@ const main = (options) => {
       return deleteProject.command(blynk, 102);	
     })
     .then((status) => {
-      // create a new project
+      // create a new projectå
       const isShared = false;
       const keepScreenOn = false;
       const theme = 'Blynk';
       const isAppConnectedOn = false;
       const widgetBackgroundOn = false;
       const isNotificationsOff = false;
-      return createProject.command(blynk, 102, 'DashTest', isShared, keepScreenOn, theme, isAppConnectedOn, isNotificationsOff, widgetBackgroundOn, 1555, 'S1', BoardType.ESP8266, ConnectionType.WI_FI);	
+      return createProject.command(blynk, {
+        id: 102,
+        projectName: 'DashTest',
+        isShared,
+        keepScreenOn,
+        theme,
+        isAppConnectedOn,
+        isNotificationsOff,
+        widgetBackgroundOn,
+        deviceId: 1555,
+        deviceName: 'S1',
+        boardType: BoardType.ESP8266,
+        connectionType:ConnectionType.WI_FI
+      });	
     })
     .then((status) => {
       //
@@ -188,6 +238,7 @@ const main = (options) => {
 const exportFunctions = {
   registerCommand,
   loginCommand,
+  createDashCommand,
   main,
 };
 
