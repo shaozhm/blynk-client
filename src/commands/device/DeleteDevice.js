@@ -8,8 +8,11 @@ const COMMAND_NAME = 'DeleteDevice';
 const COMMAND_LABEL = 'DELETE_DEVICE';
 const IS_APP_COMMAND = true;
 
-const command = (client, dashboardId, deviceId) => {
-	const command = `${COMMAND_NAME} ${dashboardId}${deviceId}`;
+const command = (client, {
+	dashId,
+	deviceId,
+}) => {
+	const command = `${COMMAND_NAME} ${dashId}${deviceId}`;
 	return new Promise((resolve, reject) => {
 		const {
       msgId,

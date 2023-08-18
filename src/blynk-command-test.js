@@ -71,7 +71,13 @@ const main = (options) => {
     })
     .then((status) => {
       //
-      return createDevice.command(blynk, 102, 1562, 'T1', BoardType.NodeMCU, ConnectionType.WI_FI);	
+      return createDevice.command(blynk, {
+        dashId: 102,
+        deviceId: 1562,
+        deviceName: 'T1',
+        boardType: BoardType.NodeMCU,
+        connectionType: ConnectionType.WI_FI
+      });	
     })
     .then((status) => {
       return updateDevice.command(blynk, 102, 1562, 'T2', BoardType.ESP8266, ConnectionType.WI_FI);	
@@ -79,23 +85,6 @@ const main = (options) => {
     .then((data) => {
       const newDevice = JSON.parse(data);
       console.log('New Device: ', newDevice);
-      return getDevice.command(blynk, {
-        dashId: 102,
-        deviceId: 1562,
-      });
-    })
-    .then((data) => {
-      const device = JSON.parse(data);
-      console.log('Get Device: ', device);
-      return refreshToken.command(blynk, 102, 1562);
-    })
-    .then((data) => {
-      console.log('Device Token: ', data);
-      return getDevices.command(blynk, 102);
-    })
-    .then((data) => {
-      const devices = JSON.parse(data);
-      console.log('Get Devices: ', devices);
 
       const dashboardId = 102;
       const deviceId = 1562;

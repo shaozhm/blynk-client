@@ -33,6 +33,16 @@ const {
   command: refreshTokenCommand,
 } = require('./refresh-token');
 
+const {
+  commandOptions: deleteDeviceOptions,
+  command: deleteDeviceCommand,
+} = require('./delete-device');
+
+const {
+  commandOptions: createDeviceOptions,
+  command: createDeviceCommand,
+} = require('./create-device');
+
 const exportFunctions = {
   registerOptions,
   registerCommand,
@@ -48,6 +58,10 @@ const exportFunctions = {
   getDeviceCommand,
   refreshTokenOptions,
   refreshTokenCommand,
+  deleteDeviceOptions,
+  deleteDeviceCommand,
+  createDeviceOptions,
+  createDeviceCommand,
 };
 
 module.exports = exportFunctions;

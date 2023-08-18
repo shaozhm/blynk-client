@@ -16,7 +16,13 @@ const COMMAND_NAME = 'CreateDevice';
 const COMMAND_LABEL = 'CREATE_DEVICE';
 const IS_APP_COMMAND = true;
 
-const command = (client, dashboardId, deviceId, deviceName, boardType, connectionType) => {
+const command = (client, {
+	dashId,
+	deviceId,
+	deviceName,
+	boardType,
+	connectionType,
+}) => {
 	const deviceObj = {
 		productId: -1,
 		id: deviceId,
@@ -25,7 +31,7 @@ const command = (client, dashboardId, deviceId, deviceName, boardType, connectio
 		boardType: boardType,
 		connectionType: connectionType,
 	};
-	const command = `${COMMAND_NAME} ${dashboardId}\0${JSON.stringify(deviceObj)}`;
+	const command = `${COMMAND_NAME} ${dashId}\0${JSON.stringify(deviceObj)}`;
 	return new Promise((resolve, reject) => {
 		const {
       msgId,

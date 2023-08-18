@@ -18,6 +18,10 @@ const {
   getDeviceCommand,
   refreshTokenOptions,
   refreshTokenCommand,
+  deleteDeviceOptions,
+  deleteDeviceCommand,
+  createDeviceOptions,
+  createDeviceCommand,
 } = require('../src/CLIs');
 
 dotenv.config();
@@ -60,7 +64,17 @@ const commands = yargs
     yargs.options(refreshTokenOptions)
   }, (options) => {
     refreshTokenCommand(options);
-  }) 
+  })
+  .command('delete-device', 'delete a specific device in a specific dashboard', (yargs) => {
+    yargs.options(deleteDeviceOptions)
+  }, (options) => {
+    deleteDeviceCommand(options);
+  })
+  .command('create-device', 'create a specific device in a specific dashboard', (yargs) => {
+    yargs.options(createDeviceOptions)
+  }, (options) => {
+    createDeviceCommand(options);
+  })
   .command('test', 'testing', loginOptions, (options) => {
     main(options);
   }).argv;
