@@ -216,12 +216,7 @@ const main = (options) => {
     .then((data) => {
       const widget = JSON.parse(data);
       console.log('Get Widget: ', widget);
-
-      // return deleteDevice.command(blynk, 102, device.id);
     })
-    // .then((status) => {
-    //   return ping.command(blynk);	
-    // })
     .catch((error) => {
       console.log("Error: " + error);
       process.exit();
