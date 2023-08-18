@@ -99,8 +99,8 @@ const connect = (client, callback, username, password, appName) => {
 					break;
 				case MsgType.LOAD_PROFILE_GZIPPED:
 					if (r != undefined) {
-						const buf = new Buffer(data.length - 5);
-						data.copy(buf, 0, 5);
+						const buf = new Buffer(data.length - 7);
+						data.copy(buf, 0, 7);
 						zlib.unzip(buf, (err, buffer) => {
 								if (!err) {
 									var resp = buffer.toString('utf8');
