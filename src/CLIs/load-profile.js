@@ -31,7 +31,7 @@ const command = (options) => {
     };
     connect(blynk, loginCallback, username, password, appname)
     .then((status) => {
-      return loadProfileGzipped.command(blynk);	
+      return loadProfileGzipped.command(blynk, options);	
     })
     .then((data) => {
       console.log(JSON.stringify(JSON.parse(data), null, 2));
