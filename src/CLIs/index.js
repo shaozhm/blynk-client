@@ -18,6 +18,11 @@ const {
   command: loadProfileCommand,
 } = require('./load-profile');
 
+const {
+  commandOptions: getDevicesOptions,
+  command: getDevicesCommand,
+} = require('./get-devices');
+
 const exportFunctions = {
   registerOptions,
   registerCommand,
@@ -27,6 +32,8 @@ const exportFunctions = {
   createDashCommand,
   loadProfileOptions,
   loadProfileCommand,
+  getDevicesOptions,
+  getDevicesCommand,
 };
 
 module.exports = exportFunctions;

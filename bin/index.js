@@ -12,6 +12,8 @@ const {
   createDashCommand,
   loadProfileOptions,
   loadProfileCommand,
+  getDevicesOptions,
+  getDevicesCommand,
 } = require('../src/CLIs');
 
 dotenv.config();
@@ -39,6 +41,11 @@ const commands = yargs
     yargs.options(loadProfileOptions)
   }, (options) => {
     loadProfileCommand(options);
+  })
+  .command('get-devices', 'list devices by a specific dashboard', (yargs) => {
+    yargs.options(getDevicesOptions)
+  }, (options) => {
+    getDevicesCommand(options);
   })
   .command('test', 'testing', loginOptions, (options) => {
     main(options);
