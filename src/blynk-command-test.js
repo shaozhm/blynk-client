@@ -1,8 +1,9 @@
 const Blynk = require('blynk-library');
 const Lodash = require('lodash');
 const os = require("os");
-const Fs = require('fs');
+const fs = require('fs');
 const Path = require('path');
+const envfile = require('envfile');
 
 const {
   createProject,
@@ -56,6 +57,42 @@ const registerCommand = (options) => {
 };
 
 const loginCommand = (options) => {
+  console.log(options);
+  const {
+    username,
+    password,
+    host,
+    port,
+    appname,
+  } = options;
+  if (username && password && host && port) {
+    const blynk = client(host, port);
+    const loginCallback = (username, password, appName) => {
+      login.commandOnly(blynk, username, password);
+    };
+    connect(blynk, loginCallback, username, password, appname)
+    .then((status) => {
+      const dotenv = {
+        username,
+        password,
+        host,
+        port,
+        appname,
+      };
+      fs.writeFileSync('./.env', envfile.stringify(dotenv));
+    })
+    .catch((error) => {
+      console.error(error);
+    })
+    .finally(() => {
+      if (blynk && blynk.socket) {
+        blynk.socket.destroy();
+      }
+    });
+  }
+};
+
+const main = (options) => {
   const username = options.u;
   const password = options.p;
   const host = options.h;
@@ -151,6 +188,7 @@ const loginCommand = (options) => {
 const exportFunctions = {
   registerCommand,
   loginCommand,
+  main,
 };
 
 module.exports = exportFunctions;

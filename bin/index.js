@@ -3,43 +3,63 @@ const yargs = require('yargs');
 const {
   registerCommand,
   loginCommand,
+  main,
 } = require('../src/blynk-command-test');
 
-// read in settings
 dotenv.config();
 
-const loginOptions = (yargs) => {
-  yargs.option('u', {
-    alias: 'username',
+const registerOptions = {
+  username: {
+    alias: 'u',
     describe: 'username',
     type: 'string',
-    demandOption: false,
-  })
-  .option('p', {
-    alias: 'password',
+    demandOption: true,
+  },
+  password: {
+    alias: 'p',
     describe: 'password',
     type: 'string',
-    demandOption: false,
-  })
-  .option('h', {
-    alias: 'host',
+    demandOption: true,
+  },
+  host: {
+    alias: 'h',
     describe: 'host',
     type: 'string',
     demandOption: false,
-  })
-  .option('t', {
-    alias: 'port',
+    default: 'localhost',
+  },
+  port: {
+    alias: 't',
     describe: 'port',
     type: 'int',
     demandOption: false,
-  });
+    default: 9443,
+  }
+};
+
+const loginOptions = {
+  ...registerOptions,
+  appname: {
+    alias: 'n',
+    describe: 'app name',
+    type: 'string',
+    demandOption: false,
+    default: 'Blynk',
+  }
 }
 
 const commands = yargs
-  .usage('Usage: [-u username] [-p password] [-h host] [-t port]')
-  .command('register', 'register a new user', loginOptions, (options) => {
+  .usage('Usage: register | login')
+  .command('register', 'register a new user', (yargs) => {
+    yargs.options(registerOptions)
+  }, (options) => {
     registerCommand(options);
   })
-  .command('login', 'connect a blynk server', loginOptions, (options) => {
+  .command('login', 'connect a blynk server', (yargs) => {
+    yargs.options(loginOptions)
+  }, (options) => {
     loginCommand(options);
+  })
+  .command('test', 'testing', loginOptions, (options) => {
+    main(options);
   }).argv;

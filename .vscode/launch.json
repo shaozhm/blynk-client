@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "test - register",
+      "name": "register",
       "type": "node",
       "cwd": "${workspaceFolder}",
       "request": "launch",
@@ -15,6 +15,58 @@
         "--inspect-brk",
         ".",
         "register",
+        "-u",
+        "new@blynk.cc",
+        "-p",
+        "new",
+        "-h",
+        "localhost",
+        "-t",
+        "9443",
+      ],
+      "skipFiles": [
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    },
+    {
+      "name": "login",
+      "type": "node",
+      "cwd": "${workspaceFolder}",
+      "request": "launch",
+      "env": {
+      },
+      "runtimeArgs": [
+        "--inspect-brk",
+        ".",
+        "login",
+        "-u",
+        "new@blynk.cc",
+        "-p",
+        "new",
+        "-h",
+        "localhost",
+        "-t",
+        "9443",
+      ],
+      "skipFiles": [
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    },
+    {
+      "name": "test",
+      "type": "node",
+      "cwd": "${workspaceFolder}",
+      "request": "launch",
+      "env": {
+      },
+      "runtimeArgs": [
+        "--inspect-brk",
+        ".",
+        "test",
         "-u",
         "new@blynk.cc",
         "-p",
