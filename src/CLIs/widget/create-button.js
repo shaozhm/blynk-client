@@ -10,7 +10,7 @@ const {
   basic,
 } = require('../basic');
 
-const commandOptions = {
+const basicCommandOptions = {
   dashId: {
     type: 'int',
     demandOption: true,
@@ -94,19 +94,29 @@ const commandOptions = {
     demandOption: false,
     default: 0,
   },
-  sendOnReleaseOn: {
-    type: 'boolean',
+}
+const commandOptions = {
+  ...basicCommandOptions,
+  onLabel: {
+    type: 'string',
     demandOpiton: false,
-    default: true,
+    default: 'ON',
   },
-  maximumFractionDigits: {
-    type: 'int',
+  offLabel: {
+    type: 'string',
     demandOption: false,
-    default: 1,
+    default: 'OFF',
   },
-  showValueOn: {
+  pushMode: {
     type: 'boolean',
     demandOption: false,
     default: true,
   },
 };
+
+const exportFunctions = {
+  basicCommandOptions,
+  commandOptions,
+};
+
+module.exports = exportFunctions;
