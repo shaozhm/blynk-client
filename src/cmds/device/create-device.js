@@ -1,6 +1,6 @@
 const Lodash = require('lodash');
 const {
-  updateDevice,
+  createDevice,
 } = require('../../commands');
 
 const {
@@ -12,7 +12,7 @@ const {
   ConnectionType,
 } = require('../../commands/device');
 
-const commandOptions = {
+const builder = {
   dashId: {
     alias: 'p',
     describe: 'dashboard ID',
@@ -48,13 +48,17 @@ const commandOptions = {
   }
 }
 
-const callbackCommand = (blynk, options) => (status) => updateDevice.command(blynk, options);
-const callbackThen = () => (status) =>console.log('Update Device: ', status);
-const command = basic(callbackCommand, callbackThen);
+const command = 'create',
+      desc ='create a new device';
+const callbackCommand = (blynk, options) => (status) => createDevice.command(blynk, options);
+const callbackThen = () => (status) => console.log('Create Device: ', status);
+const handler = basic(callbackCommand, callbackThen);
 
 const exportFunctions = {
-  commandOptions,
   command,
+  desc,
+  builder,
+  handler,
 };
 
 module.exports = exportFunctions;

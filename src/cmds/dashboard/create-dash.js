@@ -12,7 +12,7 @@ const {
   ConnectionType,
 } = require('../../commands/device');
 
-const commandOptions = {
+const builder = {
   id: {
     type: 'int',
     demandOption: true,
@@ -73,15 +73,20 @@ const commandOptions = {
     choices: Lodash.values(ConnectionType),
     default: ConnectionType.WI_FI,
   },
-};
+}
+
+const command = 'create';
+const desc = 'create a new dashboard';
 
 const callbackCommand = (blynk, options) => (status) => createProject.command(blynk, options);
 const callbackThen = () => (status) => console.log(status);
-const command = basic(callbackCommand, callbackThen);
+const handler = basic(callbackCommand, callbackThen);
 
 const exportFunctions = {
-  commandOptions,
   command,
+  desc,
+  builder,
+  handler,
 };
 
 module.exports = exportFunctions;

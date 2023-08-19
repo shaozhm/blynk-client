@@ -1,12 +1,12 @@
 const {
-  getDevice,
+  deleteDevice,
 } = require('../../commands');
 
 const {
   basic,
 } = require('../basic');
 
-const commandOptions = {
+const builder = {
   dashId: {
     alias: 'p',
     describe: 'dashboard ID',
@@ -21,16 +21,17 @@ const commandOptions = {
   },
 }
 
-const callbackCommand = (blynk, options) => (status) => getDevice.command(blynk, options);
-const callbackThen = () => (data) => {
-  const device = JSON.parse(data);
-  console.log('Get Device: ', device);
-};
-const command = basic(callbackCommand, callbackThen);
+const command = 'delete',
+      desc = 'delete a device';
+const callbackCommand = (blynk, options) => (status) => deleteDevice.command(blynk, options);
+const callbackThen = () => (status) => console.log('Delete Device: ', status);
+const handler = basic(callbackCommand, callbackThen);
 
 const exportFunctions = {
-  commandOptions,
   command,
+  desc,
+  builder,
+  handler,
 };
 
 module.exports = exportFunctions;

@@ -6,7 +6,7 @@ const {
   basic,
 } = require('../basic');
 
-const commandOptions = {
+const builder = {
   dashId: {
     alias: 'p',
     describe: 'dashboard ID',
@@ -15,16 +15,20 @@ const commandOptions = {
   }
 }
 
+const command = 'list',
+      desc = 'get all devices of a specific dashboard';
 const callbackCommand = (blynk, options) => (status) => getDevices.command(blynk, options);
 const callbackThen = () => (data) => {
   const devices = JSON.parse(data);
   console.log('Get Devices: ', devices);
 };
-const command = basic(callbackCommand, callbackThen);
+const handler = basic(callbackCommand, callbackThen);
 
 const exportFunctions = {
-  commandOptions,
   command,
+  desc,
+  builder,
+  handler,
 };
 
 module.exports = exportFunctions;
