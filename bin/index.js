@@ -42,6 +42,8 @@ const {
   createSliderCommand,
   getWidgetOptions,
   getWidgetCommand,
+  deleteWidgetOptions,
+  deleteWidgetCommand,
 } = require('../src/CLIs');
 
 dotenv.config();
@@ -137,6 +139,11 @@ const commands = yargs
     yargs.options(getWidgetOptions)
   }, (options) => {
     getWidgetCommand(options);
+  })
+  .command('delete-widget', 'delete a widget', (yargs) => {
+    yargs.options(deleteWidgetOptions)
+  }, (options) => {
+    deleteWidgetCommand(options);
   })
   .command('test', 'testing', loginOptions, (options) => {
     main(options);

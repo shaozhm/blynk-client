@@ -4,6 +4,11 @@ const {
 } = require('./get-widget');
 
 const {
+  commandOptions: deleteWidgetOptions,
+  command: deleteWidgetCommand,
+} = require('./get-widget');
+
+const {
   commandOptions: createButtonOptions,
   command: createButtonCommand,
 } = require('./create-button');
@@ -20,6 +25,8 @@ const exportFunctions = {
   createSliderCommand,
   getWidgetOptions,
   getWidgetCommand,
+  deleteWidgetOptions,
+  deleteWidgetCommand,
 };
 
 module.exports = exportFunctions;

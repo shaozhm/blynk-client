@@ -9,8 +9,10 @@ const COMMAND_NAME = 'DeleteWidget';
 const COMMAND_LABEL = 'DELETE_WIDGET';
 const IS_APP_COMMAND = true;
 
-const command = (client, dashboardId, widgetId) => {
-
+const command = (client, {
+	dashId: dashboardId,
+	widgetId,
+}) => {
 	const command = `${COMMAND_NAME} ${dashboardId}\0${widgetId}`;
 
 	return new Promise(function(resolve, reject) {
