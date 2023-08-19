@@ -8,6 +8,14 @@ const {
 } = require('../../commands/widget/PinType');
 
 const {
+  basic,
+} = require('../basic');
+
+const {
+  createWidget,
+} = require('../../commands');
+
+const {
   basicCommandOptions,
 } = require('./create-button');
 
@@ -36,8 +44,13 @@ const commandOptions = {
   },
 };
 
+const callbackCommand = (blynk, options) => (status) => createWidget.command(blynk, options);
+const callbackThen = () => (status) => console.log(status);
+const command = basic(callbackCommand, callbackThen);
+
 const exportFunctions = {
   commandOptions,
+  command,
 };
 
 module.exports = exportFunctions;

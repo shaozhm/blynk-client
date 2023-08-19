@@ -52,6 +52,7 @@ const {
   createButtonOptions,
   createButtonCommand,
   createSliderOptions,
+  createSliderCommand,
 } = require('./widget');
 
 const exportFunctions = {
@@ -90,6 +91,7 @@ const exportFunctions = {
   createButtonOptions,
   createButtonCommand,
   createSliderOptions,
+  createSliderCommand,
 };
 
 module.exports = exportFunctions;

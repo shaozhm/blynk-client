@@ -5,12 +5,14 @@ const {
 
 const {
   commandOptions: createSliderOptions,
+  command: createSliderCommand,
 } = require('./create-slider');
 
 const exportFunctions = {
   createButtonOptions,
   createButtonCommand,
   createSliderOptions,
+  createSliderCommand,
 };
 
 module.exports = exportFunctions;

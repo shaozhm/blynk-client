@@ -8,12 +8,12 @@ const {
 } = require('../../commands/widget/PinType');
 
 const {
-  createWidget,
-} = require('../../commands');
-
-const {
   basic,
 } = require('../basic');
+
+const {
+  createWidget,
+} = require('../../commands');
 
 const basicCommandOptions = {
   dashId: {

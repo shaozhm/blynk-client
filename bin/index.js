@@ -39,6 +39,7 @@ const {
   createButtonOptions,
   createButtonCommand,
   createSliderOptions,
+  createSliderCommand,
 } = require('../src/CLIs');
 
 dotenv.config();
