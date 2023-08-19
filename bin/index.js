@@ -40,6 +40,8 @@ const {
   createButtonCommand,
   createSliderOptions,
   createSliderCommand,
+  getWidgetOptions,
+  getWidgetCommand,
 } = require('../src/CLIs');
 
 dotenv.config();
@@ -130,6 +132,11 @@ const commands = yargs
     yargs.options(createButtonOptions)
   }, (options) => {
     createButtonCommand(options);
+  })
+  .command('get-widget', 'get a widget', (yargs) => {
+    yargs.options(getWidgetOptions)
+  }, (options) => {
+    getWidgetCommand(options);
   })
   .command('test', 'testing', loginOptions, (options) => {
     main(options);
