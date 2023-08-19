@@ -8,7 +8,9 @@ const COMMAND_NAME = 'DeleteProject';
 const COMMAND_LABEL = 'DELETE_DASH';
 const IS_APP_COMMAND = true;
 
-const command = (client, dashboardId) => {
+const command = (client, {
+	id: dashboardId,
+}) => {
 	return new Promise((resolve, reject) => {
 		var msgId = client.msgId;
 		client.respPromises.set(msgId, {
