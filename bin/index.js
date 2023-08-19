@@ -10,6 +10,8 @@ const {
   loginCommand,
   createDashOptions,
   createDashCommand,
+  deleteDashOptions,
+  deleteDashCommand,
   loadProfileOptions,
   loadProfileCommand,
   getDevicesOptions,
@@ -47,6 +49,11 @@ const commands = yargs
   }, (options) => {
     createDashCommand(options);
   })
+  .command('delete-dash', 'delete a new dashboard', (yargs) => {
+    yargs.options(deleteDashOptions)
+  }, (options) => {
+    deleteDashCommand(options);
+  })
   .command('load-profile', 'load profile', (yargs) => {
     yargs.options(loadProfileOptions)
   }, (options) => {
@@ -77,7 +84,7 @@ const commands = yargs
   }, (options) => {
     createDeviceCommand(options);
   })
-  .command('update-device', 'create a specific device in a specific dashboard', (yargs) => {
+  .command('update-device', 'update a specific device in a specific dashboard', (yargs) => {
     yargs.options(updateDeviceOptions)
   }, (options) => {
     updateDeviceCommand(options);
