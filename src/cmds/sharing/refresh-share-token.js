@@ -6,7 +6,7 @@ const {
   basic,
 } = require('../basic');
 
-const commandOptions = {
+const builder = {
   dashId: {
     alias: 'p',
     describe: 'dashboard ID',
@@ -15,13 +15,17 @@ const commandOptions = {
   },
 }
 
+const command = 'refresh-token',
+      desc = 'refresh a share token';
 const callbackCommand = (blynk, options) => (status) => refreshShareToken.command(blynk, options);
 const callbackThen = () => (token) => console.log('Refresh Share Token: ', token);
-const command = basic(callbackCommand, callbackThen);
+const handler = basic(callbackCommand, callbackThen);
 
 const exportFunctions = {
-  commandOptions,
   command,
+  desc,
+  builder,
+  handler,
 };
 
 module.exports = exportFunctions;
