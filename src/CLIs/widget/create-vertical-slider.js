@@ -1,8 +1,11 @@
 const Lodash = require('lodash');
 const {
   WidgetType,
-  PinType,
 } = require('../../commands/widget/WidgetType');
+
+const {
+  PinType,
+} = require('../../commands/widget/PinType');
 
 const {
   basicCommandOptions,
