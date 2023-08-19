@@ -18,6 +18,11 @@ const {
   command: deactivateDashCommand,
 } = require('./deactivate-dash');
 
+const {
+  commandOptions: updateSettingsOptions,
+  command: updateSettingsCommand,
+} = require('./update-settings');
+
 const exportFunctions = {
   createDashOptions,
   createDashCommand,
@@ -27,6 +32,8 @@ const exportFunctions = {
   activateDashCommand,
   deactivateDashOptions,
   deactivateDashCommand,
+  updateSettingsOptions,
+  updateSettingsCommand,
 };
 
 module.exports = exportFunctions;

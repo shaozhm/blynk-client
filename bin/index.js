@@ -16,6 +16,8 @@ const {
   activateDashCommand,
   deactivateDashOptions,
   deactivateDashCommand,
+  updateSettingsOptions,
+  updateSettingsCommand,
   loadProfileOptions,
   loadProfileCommand,
   getDevicesOptions,
@@ -34,8 +36,6 @@ const {
 
 dotenv.config();
 
-
-
 const commands = yargs
   .usage('Usage: register | login | create-dash | test')
   .command('register', 'register a new user', (yargs) => {
@@ -53,17 +53,22 @@ const commands = yargs
   }, (options) => {
     createDashCommand(options);
   })
-  .command('delete-dash', 'delete a new dashboard', (yargs) => {
+  .command('delete-dash', 'delete a dashboard', (yargs) => {
     yargs.options(deleteDashOptions)
   }, (options) => {
     deleteDashCommand(options);
   })
-  .command('activate-dash', 'activate a new dashboard', (yargs) => {
+  .command('activate-dash', 'activate a dashboard', (yargs) => {
     yargs.options(activateDashOptions)
   }, (options) => {
     activateDashCommand(options);
   })
-  .command('deactivate-dash', 'deactivate a new dashboard', (yargs) => {
+  .command('deactivate-dash', 'deactivate a dashboard', (yargs) => {
+    yargs.options(deactivateDashOptions)
+  }, (options) => {
+    deactivateDashCommand(options);
+  })
+  .command('update-settings', 'update settings of a specific dashboard', (yargs) => {
     yargs.options(deactivateDashOptions)
   }, (options) => {
     deactivateDashCommand(options);

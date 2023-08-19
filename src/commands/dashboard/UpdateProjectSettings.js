@@ -8,7 +8,16 @@ const COMMAND_NAME = 'UpdateProjectSettings';
 const COMMAND_LABEL = 'UPDATE_PROJECT_SETTINGS';
 const IS_APP_COMMAND = true;
 
-const command = (client, dashboardId, projectName, isShared, keepScreenOn, theme, isAppConnectedOn, isNotificationsOff, widgetBackgroundOn) => {
+const command = (client, {
+	id: dashboardId,
+	projectName,
+	isShared,
+	keepScreenOn,
+	theme,
+	isAppConnectedOn,
+	isNotificationsOff,
+	widgetBackgroundOn,
+}) => {
 	const projectObj = {
 		name: projectName,
 		isShared,
