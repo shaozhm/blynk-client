@@ -1,9 +1,15 @@
+const Lodash = require('lodash');
 const {
-  getDevices,
+  createDevice,
   connect,
   login,
   client,
-} = require('../commands');
+} = require('../../commands');
+
+const {
+  BoardType,
+  ConnectionType,
+} = require('../../commands/device');
 
 const commandOptions = {
   dashId: {
@@ -11,6 +17,33 @@ const commandOptions = {
     describe: 'dashboard ID',
     type: 'int',
     demandOption: true,
+  },
+  deviceId: {
+    alias: 'd',
+    describe: 'device ID',
+    type: 'int',
+    demandOption: true,
+  },
+  deviceName: {
+    alias: 'n',
+    describe: 'device name',
+    type: 'string',
+    demandOption: true,
+  },
+  boardType: {
+    alias: 'b',
+    describe: 'board type',
+    type: 'string',
+    demandOption: false,
+    choices: Lodash.values(BoardType),
+    default: BoardType.ESP8266,
+  },
+  connectionType: {
+    alias: 'c',
+    type: 'string',
+    demandOption: false,
+    choices: Lodash.values(ConnectionType),
+    default: ConnectionType.WI_FI,
   }
 }
 
@@ -31,11 +64,10 @@ const command = (options) => {
     };
     connect(blynk, loginCallback, username, password, appname)
     .then((status) => {
-      return getDevices.command(blynk, options);	
+      return createDevice.command(blynk, options);	
     })
-    .then((data) => {
-      const devices = JSON.parse(data);
-      console.log('Get Devices: ', devices);
+    .then((status) => {
+      // console.log('Delete Device: ', status);
     })
     .catch((error) => {
       console.error(error);

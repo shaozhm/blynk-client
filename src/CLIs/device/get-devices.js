@@ -1,9 +1,9 @@
 const {
-  deleteDevice,
+  getDevices,
   connect,
   login,
   client,
-} = require('../commands');
+} = require('../../commands');
 
 const commandOptions = {
   dashId: {
@@ -11,13 +11,7 @@ const commandOptions = {
     describe: 'dashboard ID',
     type: 'int',
     demandOption: true,
-  },
-  deviceId: {
-    alias: 'd',
-    describe: 'device ID',
-    type: 'int',
-    demandOption: true,  
-  },
+  }
 }
 
 const command = (options) => {
@@ -37,10 +31,11 @@ const command = (options) => {
     };
     connect(blynk, loginCallback, username, password, appname)
     .then((status) => {
-      return deleteDevice.command(blynk, options);	
+      return getDevices.command(blynk, options);	
     })
-    .then((status) => {
-      console.log('Delete Device: ', status);
+    .then((data) => {
+      const devices = JSON.parse(data);
+      console.log('Get Devices: ', devices);
     })
     .catch((error) => {
       console.error(error);

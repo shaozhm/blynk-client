@@ -3,7 +3,7 @@ const {
   connect,
   login,
   client,
-} = require('../commands');
+} = require('../../commands');
 
 const commandOptions = {
   dashId: {
