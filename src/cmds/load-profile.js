@@ -6,7 +6,7 @@ const {
   basic,
 } = require('./basic');
 
-const commandOptions = {
+const builder = {
   dashId: {
     alias: 'p',
     describe: 'dashboard ID',
@@ -15,15 +15,19 @@ const commandOptions = {
   }
 }
 
+const command = 'load-profile',
+      desc = 'load profile';
 const callbackCommand = (blynk, options) => (status) => loadProfileGzipped.command(blynk, options);
 const callbackThen = () => (data) => {
   console.log(JSON.stringify(JSON.parse(data), null, 2));
 }
-const command = basic(callbackCommand, callbackThen);
+const handler = basic(callbackCommand, callbackThen);
 
 const exportFunctions = {
-  commandOptions,
   command,
+  desc,
+  builder,
+  handler,
 };
 
 module.exports = exportFunctions;

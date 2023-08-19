@@ -7,10 +7,10 @@ const {
 } = require('../commands');
 
 const {
-  commandOptions: registerOptions,
+  builder: registerOptions,
 } = require('./register');
 
-const commandOptions = {
+const builder = {
   ...registerOptions,
   appname: {
     alias: 'n',
@@ -21,7 +21,9 @@ const commandOptions = {
   }
 }
 
-const command = (options) => {
+const command = 'login',
+      desc = 'login';
+const handler = (options) => {
   console.debug(options);
   const {
     username,
@@ -58,8 +60,10 @@ const command = (options) => {
 };
 
 const exportFunctions = {
-  commandOptions,
   command,
+  desc,
+  builder,
+  handler,
 };
 
 module.exports = exportFunctions;

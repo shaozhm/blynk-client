@@ -4,7 +4,7 @@ const {
   client,
 } = require('../commands');
 
-const commandOptions = {
+const builder = {
   username: {
     alias: 'u',
     describe: 'username',
@@ -33,7 +33,9 @@ const commandOptions = {
   }
 };
 
-const command = (options) => {
+const command = 'register',
+      desc = 'register a new user';
+const handler = (options) => {
   const username = options.u;
   const password = options.p;
   const host = options.h;
@@ -63,8 +65,10 @@ const command = (options) => {
 };
 
 const exportFunctions = {
-  commandOptions,
   command,
+  desc,
+  builder,
+  handler,
 };
 
 module.exports = exportFunctions;
