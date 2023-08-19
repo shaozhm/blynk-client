@@ -1,3 +1,4 @@
+const Lodash = require('lodash');
 const {
   WidgetType,
   PinType,
