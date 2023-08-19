@@ -23,6 +23,11 @@ const {
   command: createDeviceCommand,
 } = require('./create-device');
 
+const {
+  commandOptions: updateDeviceOptions,
+  command: updateDeviceCommand,
+} = require('./update-device');
+
 const exportFunctions = {
   getDevicesOptions,
   getDevicesCommand,
@@ -34,6 +39,8 @@ const exportFunctions = {
   deleteDeviceCommand,
   createDeviceOptions,
   createDeviceCommand,
+  updateDeviceOptions,
+  updateDeviceCommand,
 };
 
 module.exports = exportFunctions;

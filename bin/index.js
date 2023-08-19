@@ -22,6 +22,8 @@ const {
   deleteDeviceCommand,
   createDeviceOptions,
   createDeviceCommand,
+  updateDeviceOptions,
+  updateDeviceCommand,
 } = require('../src/CLIs');
 
 dotenv.config();
@@ -74,6 +76,11 @@ const commands = yargs
     yargs.options(createDeviceOptions)
   }, (options) => {
     createDeviceCommand(options);
+  })
+  .command('update-device', 'create a specific device in a specific dashboard', (yargs) => {
+    yargs.options(updateDeviceOptions)
+  }, (options) => {
+    updateDeviceCommand(options);
   })
   .command('test', 'testing', loginOptions, (options) => {
     main(options);
