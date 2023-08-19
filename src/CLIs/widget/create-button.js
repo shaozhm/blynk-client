@@ -115,9 +115,13 @@ const commandOptions = {
   },
 };
 
+const callbackCommand = (blynk, options) => (status) => createWidget.command(blynk, options);
+const callbackThen = () => (status) => console.log(status);
+const command = basic(callbackCommand, callbackThen);
+
 const exportFunctions = {
   basicCommandOptions,
   commandOptions,
+  command,
 };
-
 module.exports = exportFunctions;

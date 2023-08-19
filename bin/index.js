@@ -36,6 +36,9 @@ const {
   getShareTokenCommand,
   refreshShareTokenOptions,
   refreshShareTokenCommand,
+  createButtonOptions,
+  createButtonCommand,
+  createSliderOptions,
 } = require('../src/CLIs');
 
 dotenv.config();
@@ -121,6 +124,11 @@ const commands = yargs
     yargs.options(refreshShareTokenOptions)
   }, (options) => {
     refreshShareTokenCommand(options);
+  })
+  .command('create-button', 'create a button', (yargs) => {
+    yargs.options(createButtonOptions)
+  }, (options) => {
+    createButtonCommand(options);
   })
   .command('test', 'testing', loginOptions, (options) => {
     main(options);

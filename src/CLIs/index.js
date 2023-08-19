@@ -48,6 +48,12 @@ const {
   refreshShareTokenCommand,
 } = require('./sharing');
 
+const {
+  createButtonOptions,
+  createButtonCommand,
+  createSliderOptions,
+} = require('./widget');
+
 const exportFunctions = {
   registerOptions,
   registerCommand,
@@ -81,6 +87,9 @@ const exportFunctions = {
   getShareTokenCommand,
   refreshShareTokenOptions,
   refreshShareTokenCommand,
+  createButtonOptions,
+  createButtonCommand,
+  createSliderOptions,
 };
 
 module.exports = exportFunctions;
