@@ -8,7 +8,9 @@ const COMMAND_NAME = 'Activate';
 const COMMAND_LABEL = 'ACTIVATE_DASHBOARD';
 const IS_APP_COMMAND = true;
 
-const command = (client, dashboardId) => {
+const command = (client, {
+	id: dashboardId,
+}) => {
 	const command = `${COMMAND_NAME} ${dashboardId}`;
 	return new Promise((resolve, reject) => {
 		var msgId = client.msgId;
