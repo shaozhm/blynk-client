@@ -12,6 +12,8 @@ const {
   createDashCommand,
   deleteDashOptions,
   deleteDashCommand,
+  activateDashOptions,
+  activateDashCommand,
   loadProfileOptions,
   loadProfileCommand,
   getDevicesOptions,
@@ -53,6 +55,11 @@ const commands = yargs
     yargs.options(deleteDashOptions)
   }, (options) => {
     deleteDashCommand(options);
+  })
+  .command('activate-dash', 'activate a new dashboard', (yargs) => {
+    yargs.options(activateDashOptions)
+  }, (options) => {
+    activateDashCommand(options);
   })
   .command('load-profile', 'load profile', (yargs) => {
     yargs.options(loadProfileOptions)

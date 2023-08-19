@@ -1,4 +1,3 @@
-const Lodash = require('lodash');
 const {
   deleteProject,
 } = require('../../commands');
