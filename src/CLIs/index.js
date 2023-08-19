@@ -20,6 +20,8 @@ const {
   deleteDashCommand,
   activateDashOptions,
   activateDashCommand,
+  deactivateDashOptions,
+  deactivateDashCommand,
 } = require('./dashboard');
 
 const {
@@ -48,6 +50,8 @@ const exportFunctions = {
   deleteDashCommand,
   activateDashOptions,
   activateDashCommand,
+  deactivateDashOptions,
+  deactivateDashCommand,
   loadProfileOptions,
   loadProfileCommand,
   getDevicesOptions,

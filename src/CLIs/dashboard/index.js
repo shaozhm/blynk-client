@@ -13,6 +13,11 @@ const {
   command: activateDashCommand,
 } = require('./activate-dash');
 
+const {
+  commandOptions: deactivateDashOptions,
+  command: deactivateDashCommand,
+} = require('./deactivate-dash');
+
 const exportFunctions = {
   createDashOptions,
   createDashCommand,
@@ -20,6 +25,8 @@ const exportFunctions = {
   deleteDashCommand,
   activateDashOptions,
   activateDashCommand,
+  deactivateDashOptions,
+  deactivateDashCommand,
 };
 
 module.exports = exportFunctions;
