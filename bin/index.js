@@ -32,6 +32,10 @@ const {
   createDeviceCommand,
   updateDeviceOptions,
   updateDeviceCommand,
+  getShareTokenOptions,
+  getShareTokenCommand,
+  refreshShareTokenOptions,
+  refreshShareTokenCommand,
 } = require('../src/CLIs');
 
 dotenv.config();
@@ -69,9 +73,9 @@ const commands = yargs
     deactivateDashCommand(options);
   })
   .command('update-settings', 'update settings of a specific dashboard', (yargs) => {
-    yargs.options(deactivateDashOptions)
+    yargs.options(updateSettingsOptions)
   }, (options) => {
-    deactivateDashCommand(options);
+    updateSettingsCommand(options);
   })
   .command('load-profile', 'load profile', (yargs) => {
     yargs.options(loadProfileOptions)
@@ -107,6 +111,16 @@ const commands = yargs
     yargs.options(updateDeviceOptions)
   }, (options) => {
     updateDeviceCommand(options);
+  })
+  .command('get-share-token', 'get the share token of a specific dashboard', (yargs) => {
+    yargs.options(getShareTokenOptions)
+  }, (options) => {
+    getShareTokenCommand(options);
+  })
+  .command('refresh-share-token', 'refresh the share token of a specific dashboard', (yargs) => {
+    yargs.options(refreshShareTokenOptions)
+  }, (options) => {
+    refreshShareTokenCommand(options);
   })
   .command('test', 'testing', loginOptions, (options) => {
     main(options);

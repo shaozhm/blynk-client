@@ -8,7 +8,9 @@ const COMMAND_NAME = 'GetShareToken';
 const COMMAND_LABEL = 'GET_SHARE_TOKEN';
 const IS_APP_COMMAND = true;
 
-const command = (client, dashboardId) => {
+const command = (client, {
+	dashId: dashboardId,
+}) => {
 	const command = `${COMMAND_NAME} ${dashboardId}`;
 
 	return new Promise(function(resolve, reject) {

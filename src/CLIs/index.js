@@ -41,6 +41,13 @@ const {
   updateDeviceCommand,
 } = require('./device');
 
+const {
+  getShareTokenOptions,
+  getShareTokenCommand,
+  refreshShareTokenOptions,
+  refreshShareTokenCommand,
+} = require('./sharing');
+
 const exportFunctions = {
   registerOptions,
   registerCommand,
@@ -70,6 +77,10 @@ const exportFunctions = {
   createDeviceCommand,
   updateDeviceOptions,
   updateDeviceCommand,
+  getShareTokenOptions,
+  getShareTokenCommand,
+  refreshShareTokenOptions,
+  refreshShareTokenCommand,
 };
 
 module.exports = exportFunctions;
