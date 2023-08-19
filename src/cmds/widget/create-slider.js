@@ -19,7 +19,7 @@ const {
   basicCommandOptions,
 } = require('./create-button');
 
-const commandOptions = {
+const builder = {
   ...basicCommandOptions,
   widgetType: {
     type: 'string',
@@ -44,13 +44,17 @@ const commandOptions = {
   },
 };
 
+const command = 'create-slider',
+      desc = 'create a slider widget';
 const callbackCommand = (blynk, options) => (status) => createWidget.command(blynk, options);
 const callbackThen = () => (status) => console.log(status);
-const command = basic(callbackCommand, callbackThen);
+const handler = basic(callbackCommand, callbackThen);
 
 const exportFunctions = {
-  commandOptions,
   command,
+  desc,
+  builder,
+  handler,
 };
 
 module.exports = exportFunctions;

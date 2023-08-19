@@ -19,7 +19,7 @@ const {
   basicCommandOptions,
 } = require('./create-button');
 
-const commandOptions = {
+const builder = {
   ...basicCommandOptions,
   widgetType: {
     type: 'string',

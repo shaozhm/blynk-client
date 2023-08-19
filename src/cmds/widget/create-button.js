@@ -120,7 +120,7 @@ const builder = {
   },
 };
 
-const command = 'create',
+const command = 'create-button',
       desc = 'create a button widget';
 const callbackCommand = (blynk, options) => (status) => createWidget.command(blynk, options);
 const callbackThen = () => (status) => console.log(status);
