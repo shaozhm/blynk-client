@@ -6,7 +6,7 @@ const {
   basic,
 } = require('../basic');
 
-const commandOptions = {
+const builder = {
   dashId: {
     type: 'int',
     demandOption: true,
@@ -17,13 +17,17 @@ const commandOptions = {
   }
 }
 
+const command = 'get',
+      desc = 'get a widget';
 const callbackCommand = (blynk, options) => (status) => getWidget.command(blynk, options);
 const callbackThen = () => (data) => console.log(JSON.parse(data));
-const command = basic(callbackCommand, callbackThen);
+const handler = basic(callbackCommand, callbackThen);
 
 const exportFunctions = {
-  commandOptions,
   command,
+  desc,
+  builder,
+  handler,
 };
 
 module.exports = exportFunctions;

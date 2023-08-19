@@ -95,7 +95,7 @@ const basicCommandOptions = {
     default: 0,
   },
 }
-const commandOptions = {
+const builder = {
   ...basicCommandOptions,
   widgetType: {
     type: 'string',
@@ -120,13 +120,17 @@ const commandOptions = {
   },
 };
 
+const command = 'create',
+      desc = 'create a button widget';
 const callbackCommand = (blynk, options) => (status) => createWidget.command(blynk, options);
 const callbackThen = () => (status) => console.log(status);
-const command = basic(callbackCommand, callbackThen);
+const handler = basic(callbackCommand, callbackThen);
 
 const exportFunctions = {
   basicCommandOptions,
-  commandOptions,
   command,
+  desc,
+  builder,
+  handler,
 };
 module.exports = exportFunctions;
