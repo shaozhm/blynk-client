@@ -1,9 +1,10 @@
 const {
   getDevices,
-  connect,
-  login,
-  client,
 } = require('../../commands');
+
+const {
+  basic,
+} = require('../basic');
 
 const commandOptions = {
   dashId: {
@@ -14,39 +15,12 @@ const commandOptions = {
   }
 }
 
-const command = (options) => {
-  console.debug(options);
-  const {
-    username,
-    password,
-    host,
-    port,
-    appname,
-  } = process.env;
-  if (username && password && host && port) {
-    console.debug(username, password, host, port, appname);
-    const blynk = client(host, port);
-    const loginCallback = (username, password, appName) => {
-      login.commandOnly(blynk, username, password);
-    };
-    connect(blynk, loginCallback, username, password, appname)
-    .then((status) => {
-      return getDevices.command(blynk, options);	
-    })
-    .then((data) => {
-      const devices = JSON.parse(data);
-      console.log('Get Devices: ', devices);
-    })
-    .catch((error) => {
-      console.error(error);
-    })
-    .finally(() => {
-      if (blynk && blynk.socket) {
-        blynk.socket.destroy();
-      }
-    });
-  }
-}
+const callbackCommand = (blynk, options) => (status) => getDevices.command(blynk, options);
+const callbackThen = () => (data) => {
+  const devices = JSON.parse(data);
+  console.log('Get Devices: ', devices);
+};
+const command = basic(callbackCommand, callbackThen);
 
 const exportFunctions = {
   commandOptions,
