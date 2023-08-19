@@ -1,9 +1,20 @@
 const {
+  WidgetType,
+  PinType,
+} = require('../../commands/widget/WidgetType');
+
+const {
   basicCommandOptions,
 } = require('./create-button');
 
 const commandOptions = {
   ...basicCommandOptions,
+  widgetType: {
+    type: 'string',
+    demandOption: false,
+    choices: Lodash.values(WidgetType),
+    default: WidgetType.SLIDER,
+  },
   sendOnReleaseOn: {
     type: 'boolean',
     demandOpiton: false,

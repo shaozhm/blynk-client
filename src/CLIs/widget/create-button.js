@@ -1,7 +1,7 @@
 const {
   WidgetType,
   PinType,
-} = require('../../commands/widget');
+} = require('../../commands/widget/WidgetType');
 const {
   createWidget,
 } = require('../../commands');
@@ -22,11 +22,6 @@ const basicCommandOptions = {
   widgetId: {
     type: 'string',
     demandOption: false,
-  },
-  widgetType: {
-    type: 'string',
-    demandOption: true,
-    choices: Lodash.values(WidgetType),
   },
   pwmMode: {
     type: 'boolean',
@@ -97,6 +92,12 @@ const basicCommandOptions = {
 }
 const commandOptions = {
   ...basicCommandOptions,
+  widgetType: {
+    type: 'string',
+    demandOption: false,
+    choices: Lodash.values(WidgetType),
+    default: WidgetType.BUTTON,
+  },
   onLabel: {
     type: 'string',
     demandOpiton: false,
