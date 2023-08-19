@@ -14,8 +14,8 @@ const {
 } = require('./load-profile');
 
 const {
-  commandOptions: createDashOptions,
-  command: createDashCommand,
+  createDashOptions,
+  createDashCommand,
 } = require('./dashboard');
 
 const {
