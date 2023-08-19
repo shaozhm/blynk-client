@@ -16,13 +16,8 @@ const {
   BoardType,
   ConnectionType,
   createDevice,
-  deleteDevice,
-  getDevice,
   updateDevice,
-  getDevices,
-  refreshToken,
   createWidget,
-  deleteWidget,
   getWidget,
   ping,
   connect,
@@ -80,13 +75,19 @@ const main = (options) => {
       });	
     })
     .then((status) => {
-      return updateDevice.command(blynk, 102, 1562, 'T2', BoardType.ESP8266, ConnectionType.WI_FI);	
+      return updateDevice.command(blynk, {
+        dashId: 102,
+        deviceId: 1562,
+        deviceName: 'T2',
+        boardType: BoardType.ESP8266,
+        connectionType: ConnectionType.WI_FI,
+      });	
     })
     .then((data) => {
       const newDevice = JSON.parse(data);
       console.log('New Device: ', newDevice);
 
-      const dashboardId = 102;
+      const dashId = 102;
       const deviceId = 1562;
       const widgetId = 1;
       const widgetType = 'BUTTON';
@@ -99,12 +100,31 @@ const main = (options) => {
       const pushMode = true;
       const pinType = 'DIGITAL';
       const pinNumber = 5;
-      return createWidget.command(blynk, dashboardId, deviceId, widgetId, widgetType, label, onLabel, offLabel, x, y, width, height, pwmMode, pushMode, pinType, pinNumber);
+      return createWidget.command(blynk, {
+        dashId,
+        deviceId,
+        widgetId,
+        widgetType,
+        label,
+        onLabel,
+        offLabel,
+        x,
+        y,
+        width,
+        height,
+        pwmMode,
+        pushMode,
+        pinType,
+        pinNumber,
+      });
     })
     .then((status) => {
-      const dashboardId = 102;
+      const dashId = 102;
       const widgetId = 1;
-      return getWidget.command(blynk, dashboardId, widgetId);
+      return getWidget.command(blynk, {
+        dashId,
+        widgetId,
+      });
     })
     .then((data) => {
       const widget = JSON.parse(data);
