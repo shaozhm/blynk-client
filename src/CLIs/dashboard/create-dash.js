@@ -4,12 +4,12 @@ const {
   connect,
   login,
   client,
-} = require('../commands');
+} = require('../../commands');
 
 const {
   BoardType,
   ConnectionType,
-} = require('../commands/device');
+} = require('../../commands/device');
 
 const commandOptions = {
   id: {

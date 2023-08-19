@@ -9,14 +9,14 @@ const {
 } = require('./login');
 
 const {
-  commandOptions: createDashOptions,
-  command: createDashCommand,
-} = require('./create-dash');
-
-const {
   commandOptions: loadProfileOptions,
   command: loadProfileCommand,
 } = require('./load-profile');
+
+const {
+  commandOptions: createDashOptions,
+  command: createDashCommand,
+} = require('./dashboard');
 
 const {
   getDevicesOptions,
