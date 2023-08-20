@@ -20,10 +20,6 @@ const {
   commandObject: getDevices,
 } = require('./GetDevices');
 
-const {
-  commandObject: refreshToken,
-} = require('./RefreshToken');
-
 const exportFunctions = {
   BoardType,
   ConnectionType,
@@ -32,7 +28,6 @@ const exportFunctions = {
   getDevice,
   updateDevice,
   getDevices,
-  refreshToken,
 };
 
 module.exports = exportFunctions;

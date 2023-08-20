@@ -8,7 +8,6 @@ const {
   getDevice,
   updateDevice,
   getDevices,
-  refreshToken,
 } = require('./device');
 
 const {
@@ -36,6 +35,7 @@ const {
   getEnergy,
   assignToken,
   getProjectByToken,
+  refreshToken,
 } = require('./main');
 
 const {
@@ -67,6 +67,7 @@ const commands = Lodash.keyBy([
   getEnergy,
   assignToken,
   getProjectByToken,
+  refreshToken,
   //device
   createDevice,
   deleteDevice,
@@ -100,6 +101,7 @@ const exportFunctions = {
   getEnergy,
   assignToken,
   getProjectByToken,
+  refreshToken,
   //device
   BoardType,
   ConnectionType,
@@ -108,7 +110,6 @@ const exportFunctions = {
   getDevice,
   updateDevice,
   getDevices,
-  refreshToken,
   //dashboard
   createProject,
   deleteProject,
