@@ -1,5 +1,5 @@
 const {
-  activateDashboard,
+  deactivateDashboard,
 } = require('../../commands');
 
 const {
@@ -13,10 +13,9 @@ const builder = {
   },
 }
 
-const command = 'activate';
-const desc = 'activate a dashboard';
-
-const callbackCommand = (blynk, options) => (status) => activateDashboard.command(blynk, options);
+const command = 'deactivate-dash';
+const desc = 'deactivate a dashboard';
+const callbackCommand = (blynk, options) => (status) => deactivateDashboard.command(blynk, options);
 const callbackThen = () => (status) => console.log(status);
 const handler = basic(callbackCommand, callbackThen);
 
