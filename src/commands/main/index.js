@@ -15,6 +15,10 @@ const {
 } = require('./GetEnergy');
 
 const {
+  commandObject: assignToken,
+} = require('./AssignToken');
+
+const {
   commandObject: getProjectByToken,
 } = require('./GetProjectByToken');
 
@@ -23,6 +27,7 @@ const exportFunctions = {
   activateDashboard,
   deactivateDashboard,
   getEnergy,
+  assignToken,
   getProjectByToken,
 };
 

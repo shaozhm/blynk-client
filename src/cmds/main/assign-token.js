@@ -1,5 +1,5 @@
 const {
-  getProjectByToken,
+  assignToken,
 } = require('../../commands');
 
 const {
@@ -7,6 +7,12 @@ const {
 } = require('../basic');
 
 const builder = {
+  dashId: {
+    alias: 'p',
+    type: 'int',
+    describe: 'dashboard id',
+    demandOption: true,
+  },
   token: {
     alias: 't',
     type: 'string',
@@ -15,10 +21,10 @@ const builder = {
   },
 }
 
-const command = 'get-project';
-const desc = 'get project by token';
-const callbackCommand = (blynk, options) => (status) => getProjectByToken.command(blynk, options);
-const callbackThen = () => (data) => console.log(data);
+const command = 'assign-token';
+const desc = 'assign a new token';
+const callbackCommand = (blynk, options) => (status) => assignToken.command(blynk, options);
+const callbackThen = () => (status) => console.log(status);
 const handler = basic(callbackCommand, callbackThen);
 
 const exportFunctions = {
