@@ -7,6 +7,10 @@ const {
 } = require('./MessageType');
 
 const {
+	commandObject: hardware,
+} = require('./main/Hardware');
+
+const {
 	commandObject: getProjectByClonedToken,
 } = require('./main/GetProjectByClonedToken');
 
@@ -89,7 +93,7 @@ const connect = (client, callback, username, password, appName) => {
 					r.resolve(responseCode);
 					clearTimeout(r.timeout);
 					break;
-				case MsgType.HARDWARE:
+				case hardware.code:
 					if (r != undefined) {
 						const resp = data.toString('utf8', 5);
 						const fields = resp.split('\0');
