@@ -34,6 +34,10 @@ const {
   commandObject: getProjectByClonedToken,
 } = require('./GetProjectByClonedToken');
 
+const {
+  commandObject: hardware,
+} = require('./Hardware');
+
 const exportFunctions = {
   loadProfileGzipped,
   activateDashboard,
@@ -44,6 +48,7 @@ const exportFunctions = {
   refreshToken,
   getCloneCode,
   getProjectByClonedToken,
+  hardware,
 };
 
 module.exports = exportFunctions;
