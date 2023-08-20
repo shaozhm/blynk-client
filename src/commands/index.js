@@ -17,7 +17,6 @@ const {
   activateDashboard,
   deactivateDashboard,
   updateProjectSettings,
-  loadProfileGzipped,
 } = require('./dashboard');
 
 const {
@@ -31,6 +30,10 @@ const {
   refreshShareToken,
   sharing,
 } = require('./sharing');
+
+const {
+  loadProfileGzipped,
+} = require('./main');
 
 const {
   commandObject: ping,
@@ -54,6 +57,8 @@ const {
 } = require('./Register');
 
 const commands = Lodash.keyBy([
+  //main
+  loadProfileGzipped,
   //device
   createDevice,
   deleteDevice,
@@ -65,7 +70,6 @@ const commands = Lodash.keyBy([
   deleteProject,
   activateDashboard,
   deactivateDashboard,
-  loadProfileGzipped,
   updateProjectSettings,
   //widget
   createWidget,
@@ -83,6 +87,8 @@ const commands = Lodash.keyBy([
 ], 'name');
 
 const exportFunctions = {
+  //main
+  loadProfileGzipped,
   //device
   BoardType,
   ConnectionType,
@@ -97,7 +103,6 @@ const exportFunctions = {
   deleteProject,
   activateDashboard,
   deactivateDashboard,
-  loadProfileGzipped,
   updateProjectSettings,
   //widget
   createWidget,

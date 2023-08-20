@@ -18,17 +18,12 @@ const {
   commandObject: updateProjectSettings,
 } = require('./UpdateProjectSettings');
 
-const {
-  commandObject: loadProfileGzipped,
-} = require('./LoadProfileGziped');
-
 const exportFunctions = {
   createProject,
   deleteProject,
   activateDashboard,
   deactivateDashboard,
   updateProjectSettings,
-  loadProfileGzipped,
 };
 
 module.exports = exportFunctions;

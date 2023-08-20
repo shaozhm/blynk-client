@@ -1,10 +1,10 @@
 const {
   loadProfileGzipped,
-} = require('../commands');
+} = require('../../commands');
 
 const {
   basic,
-} = require('./basic');
+} = require('../basic');
 
 const builder = {
   dashId: {
