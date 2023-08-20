@@ -7,6 +7,14 @@ const {
 } = require('./MessageType');
 
 const {
+	commandObject: getProjectByClonedToken,
+} = require('./main/GetProjectByClonedToken');
+
+const {
+	commandObject: loadProfileGziped,
+} = require('./main/LoadProfileGziped');
+
+const {
 	buildBlynkMessage,
   SEND_TIMEOUT,
 } = require('./send');
@@ -97,7 +105,8 @@ const connect = (client, callback, username, password, appName) => {
 						clearTimeout(r.timeout);
 					}
 					break;
-				case MsgType.LOAD_PROFILE_GZIPPED:
+				case loadProfileGziped.code:
+				case getProjectByClonedToken.code:
 					if (r != undefined) {
 						const buf = new Buffer(data.length - 7);
 						data.copy(buf, 0, 7);

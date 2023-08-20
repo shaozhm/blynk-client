@@ -36,6 +36,8 @@ const {
   assignToken,
   getProjectByToken,
   refreshToken,
+  getCloneCode,
+  getProjectByClonedToken,
 } = require('./main');
 
 const {
@@ -68,6 +70,8 @@ const commands = Lodash.keyBy([
   assignToken,
   getProjectByToken,
   refreshToken,
+  getCloneCode,
+  getProjectByClonedToken,
   //device
   createDevice,
   deleteDevice,
@@ -102,6 +106,8 @@ const exportFunctions = {
   assignToken,
   getProjectByToken,
   refreshToken,
+  getCloneCode,
+  getProjectByClonedToken,
   //device
   BoardType,
   ConnectionType,

@@ -26,6 +26,14 @@ const {
   commandObject: refreshToken,
 } = require('./RefreshToken');
 
+const {
+  commandObject: getCloneCode,
+} = require('./GetCloneCode');
+
+const {
+  commandObject: getProjectByClonedToken,
+} = require('./GetProjectByClonedToken');
+
 const exportFunctions = {
   loadProfileGzipped,
   activateDashboard,
@@ -34,6 +42,8 @@ const exportFunctions = {
   assignToken,
   getProjectByToken,
   refreshToken,
+  getCloneCode,
+  getProjectByClonedToken,
 };
 
 module.exports = exportFunctions;

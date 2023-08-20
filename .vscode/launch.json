@@ -96,5 +96,26 @@
       "internalConsoleOptions": "neverOpen",
       "port": 9229
     },
+    {
+      "name": "get-project-by-cloned-token",
+      "type": "node",
+      "cwd": "${workspaceFolder}",
+      "request": "launch",
+      "env": {
+      },
+      "runtimeArgs": [
+        "--inspect-brk",
+        ".",
+        "main",
+        "get-project-by-cloned-token",
+        "-t",
+        "C-Po2BI-B7BqtORUhri0jyx66g3AHL3e",
+      ],
+      "skipFiles": [
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    },
   ]
 }
