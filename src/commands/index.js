@@ -33,6 +33,7 @@ const {
   loadProfileGzipped,
   activateDashboard,
   deactivateDashboard,
+  getEnergy,
 } = require('./main');
 
 const {
@@ -61,6 +62,7 @@ const commands = Lodash.keyBy([
   loadProfileGzipped,
   activateDashboard,
   deactivateDashboard,
+  getEnergy,
   //device
   createDevice,
   deleteDevice,
@@ -89,6 +91,9 @@ const commands = Lodash.keyBy([
 const exportFunctions = {
   //main
   loadProfileGzipped,
+  activateDashboard,
+  deactivateDashboard,
+  getEnergy,
   //device
   BoardType,
   ConnectionType,
@@ -101,8 +106,6 @@ const exportFunctions = {
   //dashboard
   createProject,
   deleteProject,
-  activateDashboard,
-  deactivateDashboard,
   updateProjectSettings,
   //widget
   createWidget,
