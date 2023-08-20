@@ -8,6 +8,27 @@ const COMMAND_NAME = 'Sharing';
 const COMMAND_LABEL = 'SHARING';
 const IS_APP_COMMAND = true;
 
+const command = (client, {
+	dashId: dashboardId,
+	isShared,
+}) => {
+	const command = `${COMMAND_NAME} ${dashboardId}\0${isShared}`;
+
+	return new Promise(function(resolve, reject) {
+		const{
+      msgId,
+    } = client;
+		client.respPromises.set(msgId, {
+			resolve,
+			reject,
+		});
+		send(client, command, COMMAND_CODE, IS_APP_COMMAND);
+		client.respPromises.get(msgId).timeout = setTimeout(() => {
+			reject(`${COMMAND_NAME} timeout`);
+		}, SEND_TIMEOUT);
+	});
+}
+
 const commandObject = {
 	name: COMMAND_NAME,
 	label: COMMAND_LABEL,

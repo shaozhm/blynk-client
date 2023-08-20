@@ -29,6 +29,7 @@ const {
 const {
   getShareToken,
   refreshShareToken,
+  sharing,
 } = require('./sharing');
 
 const {
@@ -70,8 +71,10 @@ const commands = Lodash.keyBy([
   createWidget,
   getWidget,
   deleteWidget,
+  //sharing
   getShareToken,
   refreshShareToken,
+  sharing,
   ping,
   connect,
   login,
@@ -100,8 +103,10 @@ const exportFunctions = {
   createWidget,
   getWidget,
   deleteWidget,
+  //sharing
   getShareToken,
   refreshShareToken,
+  sharing,
   ping,
   connect,
   login,

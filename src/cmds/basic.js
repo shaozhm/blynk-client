@@ -13,6 +13,7 @@ const basic= (callbackCommand, callbackThen) => (options) => {
     port,
     appname,
   } = process.env;
+  console.debug(username, password, host, port);
   if (username && password && host && port) {
     console.debug(username, password, host, port, appname);
     const blynk = client(host, port);

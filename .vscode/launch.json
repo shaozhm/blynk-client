@@ -31,32 +31,6 @@
       "port": 9229
     },
     {
-      "name": "test",
-      "type": "node",
-      "cwd": "${workspaceFolder}",
-      "request": "launch",
-      "env": {
-      },
-      "runtimeArgs": [
-        "--inspect-brk",
-        ".",
-        "test",
-        "-u",
-        "new@blynk.cc",
-        "-p",
-        "new",
-        "-h",
-        "localhost",
-        "-t",
-        "9443",
-      ],
-      "skipFiles": [
-      ],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "port": 9229
-    },
-    {
       "name": "create-dash",
       "type": "node",
       "cwd": "${workspaceFolder}",
@@ -66,9 +40,10 @@
       "runtimeArgs": [
         "--inspect-brk",
         ".",
-        "create-dash",
+        "dash",
+        "create",
         "--id",
-        "105",
+        "211",
         "--projectName",
         "test",
       ],
@@ -97,6 +72,29 @@
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "port": 9229
-    }
+    },
+    {
+      "name": "sharing",
+      "type": "node",
+      "cwd": "${workspaceFolder}",
+      "request": "launch",
+      "env": {
+      },
+      "runtimeArgs": [
+        "--inspect-brk",
+        ".",
+        "share",
+        "sharing",
+        "--dashId",
+        "112",
+        "--isShared",
+        "on",
+      ],
+      "skipFiles": [
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    },
   ]
 }
