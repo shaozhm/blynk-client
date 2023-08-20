@@ -34,6 +34,7 @@ const {
   activateDashboard,
   deactivateDashboard,
   getEnergy,
+  getProjectByToken,
 } = require('./main');
 
 const {
@@ -63,6 +64,7 @@ const commands = Lodash.keyBy([
   activateDashboard,
   deactivateDashboard,
   getEnergy,
+  getProjectByToken,
   //device
   createDevice,
   deleteDevice,
@@ -94,6 +96,7 @@ const exportFunctions = {
   activateDashboard,
   deactivateDashboard,
   getEnergy,
+  getProjectByToken,
   //device
   BoardType,
   ConnectionType,
