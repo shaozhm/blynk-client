@@ -1,104 +1,16 @@
+const Lodash = require('lodash');
 const {
   send,
   SEND_TIMEOUT,
 } = require('../send');
-
 
 const COMMAND_CODE = 33;
 const COMMAND_NAME = 'CreateWidget';
 const COMMAND_LABEL = 'CREATE_WIDGET';
 const IS_APP_COMMAND = true;
 
-const command = (client, {
-	dashId: dashboardId,
-	deviceId,
-	widgetId,
-	widgetType,
-	pwmMode,
-	label,
-	x,
-	y,
-	width,
-	height,
-	pinNumber,
-	pinType,
-	isDefaultColor,
-	color,
-	rangeMappingOn,
-	min,
-	max,
-	tabId,
-	onLabel,
-	offLabel,
-	pushMode,
-}) => {
-	const widgetObj = {
-		deviceId: deviceId,
-		id: widgetId,
-		pwmMode,
-		label,
-		onLabel,
-		offLabel,
-		x,
-		y,
-		width,
-		height,
-		isDefaultColor,
-		color,
-		tabId,
-		type: widgetType,
-		rangeMappingOn,
-		min,
-		max,
-		pinType,
-		pin: pinNumber,
-		pushMode,
-	};
-
-	const slider = {
-		deviceId:0,
-		id:"92131335",
-		pwmMode: false,
-		label:"",
-		x:2,
-		y:0,
-		width:4,
-		height:1,
-		tabId:0,
-		isDefaultColor:true,
-		color:600084223,
-		type:"SLIDER",
-		rangeMappingOn:false,
-		min:0,
-		max:1,
-		sendOnReleaseOn:true,
-		pin:-1,
-		maximumFractionDigits: 1,
-		showValueOn: true,
-	}
-
-	const vertialSlider = {
-		id:"1854285283",
-		deviceId:1555,
-		pwmMode:false,
-		label:"",
-		x:6,
-		y:0,
-		width:1,
-		height:3,
-		tabId:0,
-		isDefaultColor:true,
-		color:600084223,
-		type: 'VERTICAL_SLIDER',
-		rangeMappingOn:false,
-		sendOnReleaseOn:true,
-		min:0,
-		max:1023,
-		pin:5,
-		pinType:'VIRTUAL',
-		maximumFractionDigits:4,
-		showValueOn:true,
-	};
+const command = (client, options, keys) => {
+	const widgetObj = Lodash.pick(options, keys);
 
 	const digitDisplay = {
 		id:"290273867",
@@ -166,7 +78,7 @@ const command = (client, {
 	});
 }
 
-const commandObject = {
+const createButtonCommandObject = {
 	name: COMMAND_NAME,
 	label: COMMAND_LABEL,
 	code: COMMAND_CODE,
@@ -175,7 +87,7 @@ const commandObject = {
 }
 
 const exportFunctions = {
-	commandObject,
+	createButtonCommandObject,
 };
 
 module.exports = exportFunctions;
