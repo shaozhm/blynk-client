@@ -12,28 +12,6 @@ const IS_APP_COMMAND = true;
 const command = (client, options, keys) => {
 	const widgetObj = Lodash.pick(options, keys);
 
-	const digitDisplay = {
-		id:"290273867",
-		deviceId:1562,
-		pwmMode:false,
-		label:"",
-		x:2,
-		y:1,
-		width:2,
-		height:1,
-		tabId:0,
-		isDefaultColor:false,
-		color:79755519,
-		type:"DIGIT4_DISPLAY",
-		rangeMappingOn:false,
-		min:0,
-		max:1023,
-		pin:2,
-		pinType:"ANALOG",
-		fontSize:"SMALL",
-		frequency:1000,
-	};
-
 	const tab = {
 		id:"1236963761",
 		deviceId:0,
