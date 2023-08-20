@@ -12,7 +12,7 @@ const command = (client, {
 	dashId,
 	deviceId,
 }) => {
-	const command = `${COMMAND_NAME} ${dashId}${deviceId}`;
+	const command = `${COMMAND_NAME} ${dashId}\0${deviceId}`;
 	return new Promise((resolve, reject) => {
 		const {
       msgId,
