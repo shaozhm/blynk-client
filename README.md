@@ -65,3 +65,18 @@ pi:/home/pi/blynk-pi> sudo cp -f scripts/shairport-sync.service /lib/systemd/sys
 ```
 
 9. change channels for sonos speaker. To change the  `playback_mode` property of the shairport config file `/etc/shairport-sync.conf`. Example: if you want to set your speaker with left channel, you can assign playback_mode = "both left".
+
+10. add a Sleep Proxy Client to Apple TV ... ...
+``` sh
+pi:/home/pi> sudo pip3 install dnspython
+pi:/home/pi> sudo pip3 install netifaces
+pi:/home/pi> sudo apt install avahi-utils
+pi:/home/pi> git clone https://github.com/awein/SleepProxyClient.git
+pi:/home/pi> sudo /usr/bin/bash /home/pi/SleepProxyClient/sleepproxyclient.sh
+
+pi:/home/pi/blynk-pi> sudo cp -f scripts/sleep-proxy.service /etc/systemd/system/
+> sudo systemctl disable sleep-proxy
+> sudo systemctl daemon-reload
+> sudo systemctl enable sleep-proxy
+> sudo systemctl start sleep-proxy
+```
