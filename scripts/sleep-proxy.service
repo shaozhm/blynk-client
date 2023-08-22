@@ -1,0 +1,21 @@
+[Unit]
+Description=Send mDns to a sleep proxy server
+DefaultDependencies=no
+Conflicts=reboot.target
+Requires=shairport-sync.service avahi-daemon.service
+After=shairport-sync.service avahi-daemon.service
+Wants=network-online.target
+After=network.target network-online.target time-sync.target
+
+[Service]
+Environment=SPC_INTERFACES="wlan0"
+Environment=SPC_PREFERRED_PROXIES="Living-Room.local"
+Environment=SPC_LEASE_TIME=7200
+Environment=SPC_LOGFILE="/var/log/sleepproxyclient.log"
+Type=oneshot
+ExecStart=/bin/true
+ExecStop=/usr/bin/bash /home/pi/SleepProxyClient/sleepproxyclient.sh
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
