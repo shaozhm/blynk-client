@@ -41,7 +41,7 @@ const builder = {
 
 const command = 'hardware';
 const desc = 'hardware';
-const callbackCommand = (blynk, options) => (status) => getEnergy.command(blynk, options);
+const callbackCommand = (blynk, options) => (status) => hardware.command(blynk, options);
 const callbackThen = () => (status) => console.log(status);
 const handler = basic(callbackCommand, callbackThen);
 

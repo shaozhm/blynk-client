@@ -1,3 +1,8 @@
+const {
+  send,
+  SEND_TIMEOUT,
+} = require('../send');
+
 const COMMAND_CODE = 20;
 const COMMAND_NAME = 'Hardware';
 const COMMAND_LABEL = 'HARDWARE';
