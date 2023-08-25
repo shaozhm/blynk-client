@@ -80,3 +80,15 @@ pi:/home/pi/blynk-pi> sudo cp -f scripts/sleep-proxy.service /etc/systemd/system
 > sudo systemctl enable sleep-proxy
 > sudo systemctl start sleep-proxy
 ```
+
+11. add a Sleep Proxy Server (https://github.com/kfix/SleepProxyServer) - test on sonospi.local
+``` sh 
+> sudo python2 -m pip install git+https://github.com/kfix/SleepProxyServer.git
+pi:/home/pi> git clone https://github.com/kfix/SleepProxyServer.git
+> sudo /home/pi/SleepProxyServer/scripts/sleepproxyd
+pi:/home/pi/blynk-pi> sudo cp -f scripts/sleep-proxy-server.service /etc/systemd/system/
+pi:/home/pi/blynk-pi> sudo systemctl daemon-reload
+pi:/home/pi/blynk-pi> sudo systemctl enable sleep-proxy-server
+pi:/home/pi/blynk-pi> sudo systemctl start sleep-proxy-server
+```
+

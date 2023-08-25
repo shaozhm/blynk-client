@@ -9,7 +9,7 @@ After=network.target network-online.target time-sync.target
 
 [Service]
 Environment=SPC_INTERFACES="wlan0"
-Environment=SPC_PREFERRED_PROXIES="Living-Room.local"
+Environment=SPC_PREFERRED_PROXIES="sonospi.local"
 Environment=SPC_LEASE_TIME=7200
 Environment=SPC_LOGFILE="/var/log/sleepproxyclient.log"
 Type=oneshot
