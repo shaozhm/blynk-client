@@ -83,12 +83,26 @@ pi:/home/pi/blynk-pi> sudo cp -f scripts/sleep-proxy.service /etc/systemd/system
 
 11. add a Sleep Proxy Server (https://github.com/kfix/SleepProxyServer) - test on sonospi.local
 ``` sh 
-> sudo python2 -m pip install git+https://github.com/kfix/SleepProxyServer.git
-pi:/home/pi> git clone https://github.com/kfix/SleepProxyServer.git
+> sudo python2 -m pip install git+https://github.com/shaozhm/SleepProxyServer.git
+pi:/home/pi> git clone https://github.com/shaozhm/SleepProxyServer.git
 > sudo /home/pi/SleepProxyServer/scripts/sleepproxyd
 pi:/home/pi/blynk-pi> sudo cp -f scripts/sleep-proxy-server.service /etc/systemd/system/
 pi:/home/pi/blynk-pi> sudo systemctl daemon-reload
 pi:/home/pi/blynk-pi> sudo systemctl enable sleep-proxy-server
 pi:/home/pi/blynk-pi> sudo systemctl start sleep-proxy-server
+
+安装下面特定版本号的包
+python2 -m pip install dnspython==1.11.0
+python2 -m pip install gevent==1.4.0 (test passed)
+python2 -m pip install gevent==1.0.2 (test passed)
+
 ```
 
+12. disable wifi and bl (https://raspberrytips.com/disable-wifi-raspberry-pi/)
+``` sh
+
+> sudo nano /boot/config.txt
+dtoverlay=disable-wifi
+dtoverlay=disable-bt
+
+```
