@@ -12,7 +12,7 @@ const builder = {
     demandOption: true,
   },
   password: {
-    alias: 'p',
+    alias: 'w',
     describe: 'password',
     type: 'string',
     demandOption: true,
@@ -25,7 +25,7 @@ const builder = {
     default: 'localhost',
   },
   port: {
-    alias: 't',
+    alias: 'p',
     describe: 'port',
     type: 'int',
     demandOption: false,
