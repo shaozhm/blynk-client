@@ -12,7 +12,7 @@ const COMMAND_LABEL = 'LOGIN';
 const IS_APP_COMMAND = true;
 
 const commandOnly = (client, username, password) => {
-  sendLogin(client, `${COMMAND_NAME} ${username} ${password}`, COMMAND_CODE);
+  sendLogin(client, `${COMMAND_NAME} ${username} ${password}`, COMMAND_CODE, IS_APP_COMMAND);
 }
 
 const command = (client, username, password) => {

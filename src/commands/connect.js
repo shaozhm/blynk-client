@@ -32,7 +32,7 @@ const client = (host, port) => ({
 	respPromises: new Map(),
 })
 
-const createLoginMessage = (commandAndBody, code, client) => {
+const createLoginMessage = (commandAndBody, code, client, isAppCommand) => {
 	let cmdBody = null;
 	const username = commandAndBody[1];
 	const pwd = commandAndBody[2];
@@ -46,15 +46,15 @@ const createLoginMessage = (commandAndBody, code, client) => {
 	if (commandAndBody.length === 4) {
 		cmdBody += "\0" + commandAndBody[3]
 	}
- 	return buildBlynkMessage(code, client.msgId++, cmdBody, true);
+ 	return buildBlynkMessage(code, client.msgId++, cmdBody, isAppCommand);
 }
 
-const sendLogin = (client, data, code) => {
+const sendLogin = (client, data, code, isAppCommand) => {
 	if (!client.socket) {
 		return;
 	}
 	var commandAndBody = data.split(" ");
-	var message = createLoginMessage(commandAndBody, code, client);
+	var message = createLoginMessage(commandAndBody, code, client, isAppCommand);
 	client.socket.write(message);
 }
 
