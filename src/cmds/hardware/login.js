@@ -32,7 +32,7 @@ const builder = {
 
 const command = 'login',
       desc = 'login';
-const handler = (options) => {
+const handler = (options, callback) => {
   console.debug(options);
   const {
     token,
@@ -46,8 +46,10 @@ const handler = (options) => {
     };
     connect(blynk, loginCallback, token)
     .then((status) => {
-      //todolist
       console.log(status);
+      if (callback) {
+        callback(blynk, options);
+      }
     })
     .catch((error) => {
       console.error(error);
