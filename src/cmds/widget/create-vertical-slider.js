@@ -75,8 +75,8 @@ const builder = {
   },
 };
 
-const command = 'create-slider',
-      desc = 'create a slider widget';
+const command = 'create-vertical-slider',
+      desc = 'create a vertical slider widget';
 const callbackCommand = (blynk, options) => (status) => createWidget.command(blynk, options, Lodash.keys(builder));
 const callbackThen = () => (status) => console.log(status);
 const handler = basic(callbackCommand, callbackThen);

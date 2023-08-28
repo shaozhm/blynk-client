@@ -70,8 +70,8 @@ const builder = {
   },
 };
 
-const command = 'create-slider',
-      desc = 'create a slider widget';
+const command = 'create-digital-display',
+      desc = 'create a digital display widget';
 const callbackCommand = (blynk, options) => (status) => createWidget.command(blynk, options, Lodash.keys(builder));
 const callbackThen = () => (status) => console.log(status);
 const handler = basic(callbackCommand, callbackThen);
