@@ -15,6 +15,7 @@ const {
 const builder = {
   ...loginBuilder,
   type: {
+    alias: 'e',
     describe: 'pin type',
     choices: ['d', 'a', 'v'],
     type: 'string',
