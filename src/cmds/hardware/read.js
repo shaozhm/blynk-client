@@ -3,7 +3,6 @@ const {
 } = require('../../commands/hardware/HardwareSync');
 
 const {
-  builder: loginBuilder,
   handler: loginHandler,
 } = require('./login');
 
@@ -41,7 +40,6 @@ const builder = (yargs) => {
 const command = 'read <token> <pinType> [pinNumber..]';
 const desc = 'hardware read';
 const handler = (options) => {
-  // console.debug(options);
   loginHandler(options, hardwareSync.command);
 };
 
