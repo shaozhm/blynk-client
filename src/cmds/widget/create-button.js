@@ -23,12 +23,22 @@ const basicCommandOptions = {
     demandOption: true,
   },
   deviceId: {
+    alias: 'd',
     type: 'int',
     demandOption: true,
   },
   id: {
+    alias: 'w',
     type: 'int',
-    demandOption: false,
+    demandOption: true,
+  },
+  x: {
+    type: 'int',
+    demandOption: true,
+  },
+  y: {
+    type: 'int',
+    demandOption: true,
   },
   pwmMode: {
     type: 'boolean',
@@ -39,14 +49,6 @@ const basicCommandOptions = {
     type: 'string',
     demandOption: false,
     default: '',
-  },
-  x: {
-    type: 'int',
-    demandOption: true,
-  },
-  y: {
-    type: 'int',
-    demandOption: true,
   },
   isDefaultColor: {
     type: 'boolean',
