@@ -23,7 +23,7 @@ const builder = {
   port: {
     alias: 'p',
     describe: 'port',
-    type: 'int',
+    type: 'number',
     demandOption: false,
   },
 };
