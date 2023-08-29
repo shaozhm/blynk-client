@@ -18,26 +18,26 @@ const {
 const basicCommandOptions = {
   dashId: {
     alias: 'p',
-    type: 'int',
+    type: 'number',
     describe: 'dashboard id',
     demandOption: true,
   },
   deviceId: {
     alias: 'd',
-    type: 'int',
+    type: 'number',
     demandOption: true,
   },
   id: {
     alias: 'w',
-    type: 'int',
+    type: 'number',
     demandOption: true,
   },
   x: {
-    type: 'int',
+    type: 'number',
     demandOption: true,
   },
   y: {
-    type: 'int',
+    type: 'number',
     demandOption: true,
   },
   pwmMode: {
@@ -56,7 +56,7 @@ const basicCommandOptions = {
     default: true,
   },
   color: {
-    type: 'int',
+    type: 'number',
     demandOption: false,
     default: 600084223,
   },
@@ -66,7 +66,7 @@ const basicCommandOptions = {
     default: false,
   },
   tabId: {
-    type: 'int',
+    type: 'number',
     demandOption: false,
     default: 0,
   },
@@ -81,17 +81,17 @@ const builder = {
     default: WidgetType.BUTTON,
   },
   width: {
-    type: 'int',
+    type: 'number',
     demandOption: false,
     default: 2,
   },
   height: {
-    type: 'int',
+    type: 'number',
     demandOption: false,
     default: 2,
   },
   pin: {
-    type: 'int',
+    type: 'number',
     demandOption: false,
     default: -1,
   },
@@ -102,12 +102,12 @@ const builder = {
     default: PinType.DIGITAL,
   },
   min: {
-    type: 'int',
+    type: 'number',
     demandOption: false,
     default: 0,
   },
   max: {
-    type: 'int',
+    type: 'number',
     demandOption: false,
     default: 1,
   },
