@@ -16,7 +16,7 @@ const {
 } = require('../../commands');
 
 const basicCommandOptions = {
-  id: {
+  dashId: {
     alias: 'p',
     type: 'int',
     describe: 'dashboard id',
@@ -26,7 +26,7 @@ const basicCommandOptions = {
     type: 'int',
     demandOption: true,
   },
-  widgetId: {
+  id: {
     type: 'string',
     demandOption: false,
   },

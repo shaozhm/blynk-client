@@ -10,7 +10,8 @@ const COMMAND_LABEL = 'CREATE_WIDGET';
 const IS_APP_COMMAND = true;
 
 const command = (client, options, keys) => {
-	const widgetObj = Lodash.pick(options, keys);
+	const dashId = options.dashId;
+	const widgetObj = Lodash.omit(Lodash.pick(options, keys), ['dashId']);
 
 	const tab = {
 		id:"1236963761",
@@ -39,7 +40,7 @@ const command = (client, options, keys) => {
 		rangeMappingOn:false,
 	};
 
-	const command = `${COMMAND_NAME} ${dashboardId}\0${JSON.stringify(widgetObj)}`;
+	const command = `${COMMAND_NAME} ${dashId}\0${JSON.stringify(widgetObj)}`;
 
 	return new Promise(function(resolve, reject) {
 		const{
