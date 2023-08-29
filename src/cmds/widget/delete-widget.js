@@ -8,7 +8,8 @@ const {
 
 const builder = {
   dashId: {
-    type: 'int',
+    alias: 'p',
+    type: 'number',
     demandOption: true,
   },
   widgetId: {

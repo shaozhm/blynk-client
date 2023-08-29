@@ -28,17 +28,17 @@ const builder = {
     default: WidgetType.SLIDER,
   },
   width: {
-    type: 'int',
+    type: 'number',
     demandOption: false,
     default: 3,
   },
   height: {
-    type: 'int',
+    type: 'number',
     demandOption: false,
     default: 1,
   },
   pin: {
-    type: 'int',
+    type: 'number',
     demandOption: false,
     default: -1,
   },
@@ -49,12 +49,12 @@ const builder = {
     default: PinType.VIRTUAL,
   },
   min: {
-    type: 'int',
+    type: 'number',
     demandOption: false,
     default: 0,
   },
   max: {
-    type: 'int',
+    type: 'number',
     demandOption: false,
     default: 1,
   },
@@ -64,7 +64,7 @@ const builder = {
     default: true,
   },
   maximumFractionDigits: {
-    type: 'int',
+    type: 'number',
     demandOption: false,
     default: 1,
   },
