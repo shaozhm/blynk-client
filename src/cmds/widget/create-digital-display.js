@@ -28,17 +28,17 @@ const builder = {
     default: WidgetType.DIGIT4_DISPLAY,
   },
   width: {
-    type: 'int',
+    type: 'number',
     demandOption: false,
     default: 2,
   },
   height: {
-    type: 'int',
+    type: 'number',
     demandOption: false,
     default: 1,
   },
   pin: {
-    type: 'int',
+    type: 'number',
     demandOption: false,
     default: -1,
   },
@@ -49,12 +49,12 @@ const builder = {
     default: PinType.ANALOG,
   },
   min: {
-    type: 'int',
+    type: 'number',
     demandOption: false,
     default: 0,
   },
   max: {
-    type: 'int',
+    type: 'number',
     demandOption: false,
     default: 1023,
   },
@@ -64,7 +64,7 @@ const builder = {
     default: 'SMALL',
   },
   frequency: {
-    type: 'int',
+    type: 'number',
     demandOption: false,
     default: 1000,
   },
