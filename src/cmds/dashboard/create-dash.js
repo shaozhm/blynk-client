@@ -14,7 +14,7 @@ const {
 
 const builder = {
   id: {
-    type: 'int',
+    type: 'number',
     demandOption: true,
   },
   projectName: {
@@ -52,7 +52,7 @@ const builder = {
     default: false,
   },
 	deviceId: {
-    type: 'int',
+    type: 'number',
     demandOption: false,
     default: 0,
   },

@@ -8,7 +8,7 @@ const {
 
 const builder = {
   id: {
-    type: 'int',
+    type: 'number',
     demandOption: true,
   },
   projectName: {

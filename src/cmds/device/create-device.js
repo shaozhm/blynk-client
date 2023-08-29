@@ -16,13 +16,13 @@ const builder = {
   dashId: {
     alias: 'p',
     describe: 'dashboard ID',
-    type: 'int',
+    type: 'number',
     demandOption: true,
   },
   deviceId: {
     alias: 'd',
     describe: 'device ID',
-    type: 'int',
+    type: 'number',
     demandOption: true,
   },
   deviceName: {
