@@ -56,7 +56,7 @@ const command = (client, options, keys) => {
 	});
 }
 
-const createButtonCommandObject = {
+const commandObject = {
 	name: COMMAND_NAME,
 	label: COMMAND_LABEL,
 	code: COMMAND_CODE,
@@ -65,7 +65,7 @@ const createButtonCommandObject = {
 }
 
 const exportFunctions = {
-	createButtonCommandObject,
+	commandObject,
 };
 
 module.exports = exportFunctions;

@@ -17,6 +17,7 @@ const {
 
 const basicCommandOptions = {
   id: {
+    alias: 'p',
     type: 'int',
     describe: 'dashboard id',
     demandOption: true,
