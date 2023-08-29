@@ -27,7 +27,7 @@ const basicCommandOptions = {
     demandOption: true,
   },
   id: {
-    type: 'string',
+    type: 'int',
     demandOption: false,
   },
   pwmMode: {
