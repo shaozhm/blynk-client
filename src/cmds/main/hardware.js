@@ -9,7 +9,7 @@ const {
 const builder = {
   dashId: {
     alias: 'p',
-    type: 'int',
+    type: 'number',
     describe: 'dashboard id',
     demandOption: true,
   },
@@ -30,7 +30,7 @@ const builder = {
     choices: ['u', 'w'],
   },
   pin: {
-    type: 'int',
+    type: 'number',
     demandOption: true,
   },
   value: {
