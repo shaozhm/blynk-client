@@ -10,7 +10,7 @@ const builder = {
   dashId: {
     alias: 'p',
     describe: 'dashboard ID',
-    type: 'int',
+    type: 'number',
     demandOption: true,
   }
 }
