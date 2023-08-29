@@ -19,14 +19,12 @@ const builder = {
     describe: 'host',
     type: 'string',
     demandOption: false,
-    default: 'localhost',
   },
   port: {
     alias: 'p',
     describe: 'port',
     type: 'int',
     demandOption: false,
-    default: 9443,
   },
 };
 
@@ -36,9 +34,18 @@ const handler = (options, callback) => {
   console.debug(options);
   const {
     token,
-    host,
-    port,
+    host: optionHost,
+    port: optionPort,
   } = options;
+
+  const {
+    host: envHost,
+    port: envPort,
+  } = process.env;
+
+  const host = optionHost ? optionHost : envHost;
+  const port = optionPort ? optionPort : envPort;
+
   if (token && host && port) {
     const blynk = client(host, port);
     const loginCallback = (token) => {

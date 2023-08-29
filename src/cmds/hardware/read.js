@@ -18,13 +18,13 @@ const builder = {
     describe: 'pin type',
     choices: ['d', 'a', 'v'],
     type: 'string',
-    demandOption: false,
+    demandOption: true,
   },
   pin: {
     alias: 'i',
     descrive: 'pin number',
     type: 'int',
-    demandOption: false,
+    demandOption: true,
   }
 };
 
