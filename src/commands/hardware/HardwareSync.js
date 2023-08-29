@@ -8,8 +8,21 @@ const COMMAND_NAME = 'HardwareSync';
 const COMMAND_LABEL = 'HARDWARE_SYNC';
 const IS_APP_COMMAND = false;
 
-const command = (client) => {
-	const command = `${COMMAND_NAME} `;
+const command = (client, options) => {
+	const {
+		pinType,
+		pinNumber,
+	} = options;
+	const operation = 'r';
+	let messageBody;
+	if (pinType && pinNumber) {
+		if (Array.isArray(pinNumber)) {
+			messageBody = `${pinType}${operation}\0${pinNumber.join('\0')}`
+		} else {
+			messageBody = `${pinType}${operation}\0${pinNumber}`
+		}
+	}
+	const command = `${COMMAND_NAME} ${messageBody}`;
 	return new Promise((resolve, reject) => {
 		const {
       msgId,

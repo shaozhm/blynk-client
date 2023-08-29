@@ -1,9 +1,4 @@
 const {
-  connect,
-  client,
-} = require('../../commands');
-
-const {
   commandObject: hardwareSync,
 } = require('../../commands/hardware/HardwareSync');
 
@@ -12,24 +7,38 @@ const {
   handler: loginHandler,
 } = require('./login');
 
-const builder = {
-  ...loginBuilder,
-  type: {
-    alias: 'e',
+// const builder = {
+//   ...loginBuilder,
+//   type: {
+//     alias: 'e',
+//     describe: 'pin type',
+//     choices: ['d', 'a', 'v'],
+//     type: 'string',
+//     demandOption: true,
+//   },
+//   pin: {
+//     alias: 'i',
+//     descrive: 'pin number',
+//     type: 'int',
+//     demandOption: true,
+//   }
+// };
+
+const builder = (yargs) => {
+  yargs.positional('token', {
+    describe: 'device token',
+    type: 'string',
+  }).positional('pinType', {
     describe: 'pin type',
     choices: ['d', 'a', 'v'],
     type: 'string',
-    demandOption: true,
-  },
-  pin: {
-    alias: 'i',
-    descrive: 'pin number',
-    type: 'int',
-    demandOption: true,
-  }
-};
+  }).positional('pinNumber', {
+    describe: 'pin number',
+    type: 'number',
+  })
+}
 
-const command = 'read';
+const command = 'read <token> <pinType> [pinNumber..]';
 const desc = 'hardware read';
 const handler = (options) => {
   // console.debug(options);
@@ -39,6 +48,7 @@ const handler = (options) => {
 const exportFunctions = {
   command,
   desc,
+  // object declaring the options the command accepts, or a function accepting and returning a yargs instance
   builder,
   handler,
 };
