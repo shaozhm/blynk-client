@@ -8,7 +8,7 @@ const {
 
 const builder = (yargs) => {
   yargs.positional('token', {
-    describe: 'device token',
+    describe: 'device token - controller device',
     type: 'string',
   }).positional('pinType', {
     describe: 'pin type',
@@ -20,10 +20,17 @@ const builder = (yargs) => {
   }).positional('pinValue', {
     describe: 'pin value',
     type: 'number',
+  }).positional('bridgePin', {
+    describe: 'set a pin number for bridge',
+    type: 'number',
+    default: 63,
+  }).positional('targetToken', {
+    describe: 'device token - target device',
+    type: 'string',
   })
 }
 
-const command = 'write <token> <pinType> <pinNumber> <pinValue>';
+const command = 'write <token> <pinType> <pinNumber> <pinValue> [bridgePin] [targetToken]';
 const desc = 'hardware write';
 const handler = (options) => {
   loginHandler(options, bridge.command);

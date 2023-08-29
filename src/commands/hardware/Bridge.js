@@ -12,15 +12,13 @@ const command = (client, options) => {
 	const {
 		pinType,
 		pinNumber,
+    pinValue,
+    token,
 	} = options;
 	const operation = 'r';
 	let messageBody;
-	if (pinType && pinNumber) {
-		if (Array.isArray(pinNumber)) {
-			messageBody = `${pinType}${operation}\0${pinNumber.join('\0')}`
-		} else {
-			messageBody = `${pinType}${operation}\0${pinNumber}`
-		}
+	if (pinType && pinNumber && token) {
+		messageBody = `${pinType}${operation}\0${pinNumber}`
 	}
 	const command = `${COMMAND_NAME} ${messageBody}`;
 	return new Promise((resolve, reject) => {
