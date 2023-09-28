@@ -7,30 +7,7 @@ const {
   commandObject: login,
 } = require('../../commands/hardware/Login');
 
-const builder = {
-  token: {
-    alias: 't',
-    describe: 'device token',
-    type: 'string',
-    demandOption: true,
-  },
-  host: {
-    alias: 'h',
-    describe: 'host',
-    type: 'string',
-    demandOption: false,
-  },
-  port: {
-    alias: 'p',
-    describe: 'port',
-    type: 'number',
-    demandOption: false,
-  },
-};
-
-const command = 'login',
-      desc = 'login';
-const handler = (options, callback) => {
+const basic= (callbackCommand, callbackThen) => (options) => {
   console.debug(options);
   const {
     token,
@@ -52,12 +29,8 @@ const handler = (options, callback) => {
       login.commandOnly(blynk, token);
     };
     connect(blynk, loginCallback, token)
-    .then((status) => {
-      console.log(status);
-      if (callback) {
-        callback(blynk, options);
-      }
-    })
+    .then(callbackCommand(blynk, options))
+    .then(callbackThen())
     .catch((error) => {
       console.error(error);
     })
@@ -70,10 +43,7 @@ const handler = (options, callback) => {
 };
 
 const exportFunctions = {
-  command,
-  desc,
-  builder,
-  handler,
+  basic,
 };
 
 module.exports = exportFunctions;

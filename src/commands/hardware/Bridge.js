@@ -14,13 +14,16 @@ const command = (client, options) => {
 		pinNumber,
     pinValue,
     token,
+    bridgePin,
+    targetToken,
 	} = options;
-	const operation = 'r';
-	let messageBody;
-	if (pinType && pinNumber && token) {
-		messageBody = `${pinType}${operation}\0${pinNumber}`
+	const operation = 'i';
+	if (bridgePin && token) {
+    const target = targetToken ? targetToken : token
+		const messageBody = `${bridgePin}\0${operation}\0${target}`
+    const command = `${COMMAND_NAME} ${messageBody}`;
 	}
-	const command = `${COMMAND_NAME} ${messageBody}`;
+	
 	return new Promise((resolve, reject) => {
 		const {
       msgId,

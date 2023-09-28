@@ -3,7 +3,7 @@ const {
 } = require('../../commands/hardware/HardwareSync');
 
 const {
-  handler: loginHandler,
+  basic,
 } = require('./login');
 
 // const builder = {
@@ -39,9 +39,12 @@ const builder = (yargs) => {
 
 const command = 'read <token> <pinType> [pinNumber..]';
 const desc = 'hardware read';
-const handler = (options) => {
-  loginHandler(options, hardwareSync.command);
+const callbackCommand = (blynk, options) => (status) => {
+  console.log(status);
+  hardwareSync.command(blynk, options);
 };
+const callbackThen = () => (data) => {};
+const handler = basic(callbackCommand, callbackThen);
 
 const exportFunctions = {
   command,

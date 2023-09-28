@@ -126,7 +126,6 @@ const connect = (client, callback, ...authOptions) => {
 					}
 					break;
 				case MsgType.SYNC:
-					break;
 				default:
 					console.log('MsgType: ', data[0]);
 					if (r != undefined) {
