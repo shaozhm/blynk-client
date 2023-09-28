@@ -8,7 +8,7 @@ BLYNK_AGENT_HOME="/home/pi/blynk-pi"
 SONOSPI_TOKEN=$(${NODE_HOME}/bin/node ${BLYNK_AGENT_HOME} -g token)
 VPORT=$(${NODE_HOME}/bin/node ${BLYNK_AGENT_HOME} -s idle-counter-pin)
 
-python /home/pi/blynk-library/scripts/blynk_ctrl.py -s sonospi.local -p 8442 -t ${SONOSPI_TOKEN} -vw ${VPORT} 0
+python /home/pi/blynk-library/scripts/blynk_ctrl.py -s sonos.local -p 8442 -t ${SONOSPI_TOKEN} -vw ${VPORT} 0
 
 sudo /usr/sbin/shutdown -c
 exit 0
