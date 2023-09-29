@@ -18,11 +18,9 @@ const command = (client, options) => {
     targetToken,
 	} = options;
 	const operation = 'i';
-	if (bridgePin && token) {
-    const target = targetToken ? targetToken : token
-		const messageBody = `${bridgePin}\0${operation}\0${target}`
-    const command = `${COMMAND_NAME} ${messageBody}`;
-	}
+  const target = targetToken ? targetToken : token
+	const messageBody = `${bridgePin}\0${operation}\0${target}`
+  const command = `${COMMAND_NAME} ${messageBody}`;
 	
 	return new Promise((resolve, reject) => {
 		const {

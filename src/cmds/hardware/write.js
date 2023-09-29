@@ -3,7 +3,7 @@ const {
 } = require('../../commands/hardware/Bridge');
 
 const {
-  handler: loginHandler,
+  basic,
 } = require('./login');
 
 const builder = (yargs) => {
@@ -32,9 +32,12 @@ const builder = (yargs) => {
 
 const command = 'write <token> <pinType> <pinNumber> <pinValue> [bridgePin] [targetToken]';
 const desc = 'hardware write';
-const handler = (options) => {
-  loginHandler(options, bridge.command);
+const callbackCommand = (blynk, options) => (status) => {
+  console.log(status);
+  bridge.command(blynk, options);
 };
+const callbackThen = () => (data) => {};
+const handler = basic(callbackCommand, callbackThen);
 
 const exportFunctions = {
   command,
