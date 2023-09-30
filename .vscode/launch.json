@@ -31,6 +31,32 @@
       "port": 9229
     },
     {
+      "name": "login-localhost",
+      "type": "node",
+      "cwd": "${workspaceFolder}",
+      "request": "launch",
+      "env": {
+      },
+      "runtimeArgs": [
+        "--inspect-brk",
+        ".",
+        "login",
+        "-u",
+        "new@blynk.cc",
+        "-w",
+        "new",
+        "-h",
+        "localhost",
+        "-p",
+        "9443",
+      ],
+      "skipFiles": [
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    },
+    {
       "name": "create-dash",
       "type": "node",
       "cwd": "${workspaceFolder}",
@@ -63,6 +89,7 @@
       "runtimeArgs": [
         "--inspect-brk",
         ".",
+        "main",
         "load-profile",
         "--dashId",
         "105",
@@ -118,28 +145,6 @@
       "port": 9229
     },
     {
-      "name": "hardware-read",
-      "type": "node",
-      "cwd": "${workspaceFolder}",
-      "request": "launch",
-      "env": {
-      },
-      "runtimeArgs": [
-        "--inspect-brk",
-        ".",
-        "hardware",
-        "read",
-        "IoDSCSWHYGkFp5s0WLthcqXkvzzdFiXh",
-        "v",
-        "7",
-      ],
-      "skipFiles": [
-      ],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "port": 9229
-    },
-    {
       "name": "create-button",
       "type": "node",
       "cwd": "${workspaceFolder}",
@@ -165,6 +170,52 @@
         "7",
         "--pinType",
         "VIRTUAL",
+      ],
+      "skipFiles": [
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    },
+    {
+      "name": "hardware-read",
+      "type": "node",
+      "cwd": "${workspaceFolder}",
+      "request": "launch",
+      "env": {
+      },
+      "runtimeArgs": [
+        "--inspect-brk",
+        ".",
+        "hardware",
+        "read",
+        "IoDSCSWHYGkFp5s0WLthcqXkvzzdFiXh",
+        "v",
+        "7",
+      ],
+      "skipFiles": [
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    },
+    {
+      "name": "hardware-write",
+      "type": "node",
+      "cwd": "${workspaceFolder}",
+      "request": "launch",
+      "env": {
+      },
+      "runtimeArgs": [
+        "--inspect-brk",
+        ".",
+        "hardware",
+        "write",
+        "IoDSCSWHYGkFp5s0WLthcqXkvzzdFiXh",
+        "v",
+        "7",
+        "1",
+        "64",
       ],
       "skipFiles": [
       ],

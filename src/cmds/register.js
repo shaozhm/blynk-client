@@ -30,16 +30,26 @@ const builder = {
     type: 'number',
     demandOption: false,
     default: 9443,
-  }
+  },
+  tls: {
+    alias: 't',
+    describe: 'ssl connection',
+    type: 'boolean',
+    demandOption: false,
+    default: true,
+  },
 };
 
 const command = 'register',
       desc = 'register a new user';
 const handler = (options) => {
-  const username = options.u;
-  const password = options.p;
-  const host = options.h;
-  const port = options.t;
+  const {
+    username,
+    password,
+    host,
+    port,
+    tls,
+  } = options;
 
   if (username && password && host && port) {
     const blynk = client(host, port);

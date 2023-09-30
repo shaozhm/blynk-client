@@ -1,4 +1,5 @@
 const tls = require('tls');
+const net = require('net');
 const zlib = require('zlib');
 const crypto = require('crypto');
 
@@ -79,17 +80,25 @@ const connect = (client, callback, ...authOptions) => {
 		const socket = tls.connect(port, host, client.options, () => {
 				callback(...authOptions);
     });
-    
+
+		// const socket = net.connect({host: host, port: port,}, function() {
+		// 	callback(...authOptions);
+		// });
+
 		client.respPromises.get(msgId).timeout = setTimeout(() => {
 			reject(`connect timeout`);
 		}, SEND_TIMEOUT);
 
 		socket.on('data', (data) => {
+			console.log('Received Data: ', data);
 			const msgId = data.readUInt16BE(1);
+			console.log('Received Message ID: ', msgId);
 			const r =	client.respPromises.get(msgId);
+			console.log('Received Message Type: ', data[0]);
 			switch (data[0]) {
 				case MsgType.RESPONSE:
 					const responseCode = data.readUInt16BE(3);
+					console.log('Response Code: ', responseCode);
 					r.resolve(responseCode);
 					clearTimeout(r.timeout);
 					break;

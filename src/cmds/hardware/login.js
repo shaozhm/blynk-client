@@ -7,7 +7,7 @@ const {
   commandObject: login,
 } = require('../../commands/hardware/Login');
 
-const basic= (callbackCommand, callbackThen) => (options) => {
+const basic= (...callbackCommands) => (options) => {
   console.debug(options);
   const {
     token,
@@ -28,10 +28,13 @@ const basic= (callbackCommand, callbackThen) => (options) => {
     const loginCallback = (token) => {
       login.commandOnly(blynk, token);
     };
-    connect(blynk, loginCallback, token)
-    .then(callbackCommand(blynk, options))
-    .then(callbackThen())
-    .catch((error) => {
+    let p = connect(blynk, loginCallback, token);
+    if (callbackCommands && Array.isArray(callbackCommands)) {
+      callbackCommands.forEach((command) => {
+        p = p.then(command(blynk, options));
+      });
+    }
+    p.catch((error) => {
       console.error(error);
     })
     .finally(() => {

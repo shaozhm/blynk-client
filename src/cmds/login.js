@@ -30,6 +30,7 @@ const handler = (options) => {
     password,
     host,
     port,
+    tls,
     appname,
   } = options;
   if (username && password && host && port) {
@@ -44,6 +45,7 @@ const handler = (options) => {
         password,
         host,
         port,
+        tls,
         appname,
       };
       fs.writeFileSync('./.env', envfile.stringify(dotenv));

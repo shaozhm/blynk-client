@@ -1,6 +1,10 @@
 const {
-  commandObject: bridge,
-} = require('../../commands/hardware/Bridge');
+  commandObject: bridgeInit,
+} = require('../../commands/hardware/BridgeInit');
+
+const {
+  commandObject: bridgeCmd,
+} = require('../../commands/hardware/BridgeCmd');
 
 const {
   basic,
@@ -32,12 +36,12 @@ const builder = (yargs) => {
 
 const command = 'write <token> <pinType> <pinNumber> <pinValue> [bridgePin] [targetToken]';
 const desc = 'hardware write';
-const callbackCommand = (blynk, options) => (status) => {
-  console.log(status);
-  bridge.command(blynk, options);
+const callbackCommand_1 = (blynk, options) => (status) => bridgeInit.command(blynk, options)
+const callbackCommand_2 = (blynk, options) => (status) => bridgeCmd.command(blynk, options)
+const callbackCommand_3 = (blynk, options) => (status) => {
+  console.log('Command 3: ',status);
 };
-const callbackThen = () => (data) => {};
-const handler = basic(callbackCommand, callbackThen);
+const handler = basic(callbackCommand_1, callbackCommand_2, callbackCommand_3);
 
 const exportFunctions = {
   command,

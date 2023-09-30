@@ -1,4 +1,4 @@
-const SEND_TIMEOUT = 10000;
+const SEND_TIMEOUT = 120000;
 
 // const buildBlynkMessage = (cmd, msgId, cmdBody, isAppCommand) => {
 // 	const BLYNK_HEADER_SIZE = 7;
@@ -25,7 +25,7 @@ const SEND_TIMEOUT = 10000;
 const buildBlynkMessage = (cmd, msgId, cmdBody, isAppCommand) => {
 	const BLYNK_HEADER_SIZE = isAppCommand ? 7 : 5;
 	const bodyLength = (cmdBody ? cmdBody.length : 0);
-	console.log('body length: ', bodyLength);
+	console.log('body length[', bodyLength, '], message: ', cmdBody);
 
 	const bufArray = new ArrayBuffer(BLYNK_HEADER_SIZE + bodyLength);
 	let offset;
@@ -65,7 +65,7 @@ const createMessage = (commandAndBody, code, client, isAppCommand, joinToken) =>
 }
 
 const send = (client, data, code, isAppCommand, joinToken) => {
-	console.log('data:', data);
+	console.log('send:', data);
 	if (!client.socket) {
 		console.log('socket is null');
 		return;

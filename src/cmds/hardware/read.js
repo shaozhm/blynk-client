@@ -39,11 +39,10 @@ const builder = (yargs) => {
 
 const command = 'read <token> <pinType> [pinNumber..]';
 const desc = 'hardware read';
-const callbackCommand = (blynk, options) => (status) => {
-  console.log(status);
-  hardwareSync.command(blynk, options);
+const callbackCommand = (blynk, options) => (status) => hardwareSync.command(blynk, options);
+const callbackThen = () => (data) => {
+  console.log(data);
 };
-const callbackThen = () => (data) => {};
 const handler = basic(callbackCommand, callbackThen);
 
 const exportFunctions = {
