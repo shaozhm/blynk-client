@@ -24,6 +24,10 @@ const {
   SEND_TIMEOUT,
 } = require('./send');
 
+const ResponseCode = {
+  DEVICE_NOT_IN_NETWORK   : 7,
+}
+
 
 
 const client = (host, port) => ({
@@ -99,7 +103,11 @@ const connect = (client, callback, ...authOptions) => {
 				case MsgType.RESPONSE:
 					const responseCode = data.readUInt16BE(3);
 					console.log('Response Code: ', responseCode);
-					r.resolve(responseCode);
+					if (ResponseCode.DEVICE_NOT_IN_NETWORK === responseCode) {
+						r.resolve('Device no in network.');
+					} else {
+						r.resolve(responseCode);
+					}
 					clearTimeout(r.timeout);
 					break;
 				case hardware.code:

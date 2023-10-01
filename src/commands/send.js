@@ -1,4 +1,4 @@
-const SEND_TIMEOUT = 120000;
+const SEND_TIMEOUT = 10000;
 
 // const buildBlynkMessage = (cmd, msgId, cmdBody, isAppCommand) => {
 // 	const BLYNK_HEADER_SIZE = 7;

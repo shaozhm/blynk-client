@@ -15,8 +15,11 @@ const command = (client, options) => {
     pinValue,
     bridgePin,
 	} = options;
-	const operation = 'w';
-	const messageBody = `${bridgePin}\0${pinType}${operation}\0${pinNumber}\0${pinValue}`
+	const operation = options._[1] === 'write' ? 'w' : 'r';
+	let messageBody = `${bridgePin}\0${pinType}${operation}\0${pinNumber}`
+	if (operation === 'w') {
+		messageBody += `\0${pinValue}`
+	}
   const command = `${COMMAND_NAME} ${messageBody}`;
 	
 	return new Promise((resolve, reject) => {

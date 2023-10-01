@@ -27,7 +27,7 @@ const builder = (yargs) => {
   }).positional('bridgePin', {
     describe: 'set a pin number for bridge',
     type: 'number',
-    default: 63,
+    default: 64,
   }).positional('targetToken', {
     describe: 'device token - target device',
     type: 'string',
