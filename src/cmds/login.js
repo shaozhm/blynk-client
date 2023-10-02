@@ -18,6 +18,13 @@ const builder = {
     type: 'string',
     demandOption: false,
     default: 'Blynk',
+  },
+  keep: {
+    alias: 'k',
+    describe: 'keep session',
+    type: 'boolean',
+    demandOption: false,
+    default: false,
   }
 }
 
@@ -32,6 +39,7 @@ const handler = (options) => {
     port,
     tls,
     appname,
+    keep,
   } = options;
   if (username && password && host && port) {
     const blynk = client(host, port);
@@ -54,7 +62,7 @@ const handler = (options) => {
       console.error(error);
     })
     .finally(() => {
-      if (blynk && blynk.socket) {
+      if (!keep && blynk && blynk.socket) {
         blynk.socket.destroy();
       }
     });
