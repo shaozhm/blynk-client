@@ -5,9 +5,15 @@ const {
 const {
   commandObject: bridgeCmd,
 } = require('../../commands/hardware/BridgeCmd');
+
 const {
   basic,
 } = require('./login');
+
+// const {
+//   basic,
+// } = require('../basic');
+
 
 // const builder = {
 //   ...loginBuilder,
@@ -63,10 +69,6 @@ const builder = (yargs) => {
 
 const command = 'read <token> <pinType> [pinNumber..]';
 const desc = 'hardware read';
-// const callbackCommand = (blynk, options) => (status) => hardwareSync.command(blynk, options);
-// const callbackThen = () => (data) => {
-//   console.log(data);
-// };
 const callbackCommand_1 = (blynk, options) => (status) => bridgeInit.command(blynk, options)
 const callbackCommand_2 = (blynk, options) => (status) => bridgeCmd.command(blynk, options)
 const callbackCommand_3 = (blynk, options) => (status) => {
@@ -77,7 +79,6 @@ const handler = basic(callbackCommand_1, callbackCommand_2, callbackCommand_3);
 const exportFunctions = {
   command,
   desc,
-  // object declaring the options the command accepts, or a function accepting and returning a yargs instance
   builder,
   handler,
 };

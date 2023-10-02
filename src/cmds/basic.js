@@ -4,7 +4,7 @@ const {
   client,
 } = require('../commands');
 
-const basic= (callbackCommand, callbackThen) => (options) => {
+const basic= (...callbackCommands) => (options) => {
   console.debug(options);
   const {
     username,
@@ -20,10 +20,13 @@ const basic= (callbackCommand, callbackThen) => (options) => {
     const loginCallback = (username, password, appName) => {
       login.commandOnly(blynk, username, password);
     };
-    connect(blynk, loginCallback, username, password, appname)
-    .then(callbackCommand(blynk, options))
-    .then(callbackThen())
-    .catch((error) => {
+    let p = connect(blynk, loginCallback, username, password, appname);
+    if (callbackCommands && Array.isArray(callbackCommands)) {
+      callbackCommands.forEach((command) => {
+        p = p.then(command(blynk, options));
+      });
+    }
+    p.catch((error) => {
       console.error(error);
     })
     .finally(() => {
