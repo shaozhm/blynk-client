@@ -11,6 +11,7 @@ const basic= (...callbackCommands) => (options) => {
     password,
     host,
     port,
+    tls,
     appname,
   } = process.env;
   console.debug(username, password, host, port);
@@ -20,7 +21,7 @@ const basic= (...callbackCommands) => (options) => {
     const loginCallback = (username, password, appName) => {
       login.commandOnly(blynk, username, password);
     };
-    let p = connect(blynk, loginCallback, username, password, appname);
+    let p = connect(blynk, loginCallback, tls, username, password, appname);
     if (callbackCommands && Array.isArray(callbackCommands)) {
       callbackCommands.forEach((command) => {
         p = p.then(command(blynk, options));

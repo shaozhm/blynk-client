@@ -59,7 +59,7 @@ const handler = (options) => {
     };
 
     const appname = 'Blynk';
-    connect(blynk, registerCallback, username, password, appname)
+    connect(blynk, registerCallback, tls, username, password, appname)
     .then((status) => {
       console.log(`[${status}]: successfully`)	
     })

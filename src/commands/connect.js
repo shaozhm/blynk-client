@@ -63,7 +63,7 @@ const sendLogin = (client, data, code, isAppCommand) => {
 	client.socket.write(message);
 }
 
-const connect = (client, callback, ...authOptions) => {
+const connect = (client, callback, isTLS, ...authOptions) => {
 	client.options = {
 		// key: fs.readFileSync('privatekey.pem'),
 		// cert: fs.readFileSync('sonospi-server.crt'),
@@ -81,13 +81,16 @@ const connect = (client, callback, ...authOptions) => {
 			reject,
     });
     
-		const socket = tls.connect(port, host, client.options, () => {
+		let socket;
+		if (isTLS) {
+			socket = tls.connect(port, host, client.options, () => {
 				callback(...authOptions);
     });
-
-		// const socket = net.connect({host: host, port: port,}, function() {
-		// 	callback(...authOptions);
-		// });
+		} else {
+			socket = net.connect({host: host, port: port,}, function() {
+			callback(...authOptions);
+		});
+		}
 
 		client.respPromises.get(msgId).timeout = setTimeout(() => {
 			reject(`connect timeout`);

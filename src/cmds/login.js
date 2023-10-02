@@ -38,7 +38,7 @@ const handler = (options) => {
     const loginCallback = (username, password, appName) => {
       login.commandOnly(blynk, username, password);
     };
-    connect(blynk, loginCallback, username, password, appname)
+    connect(blynk, loginCallback, tls, username, password, appname)
     .then((status) => {
       const dotenv = {
         username,
