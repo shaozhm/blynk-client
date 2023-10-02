@@ -82,7 +82,7 @@ const connect = (client, callback, isTLS, ...authOptions) => {
     });
     
 		let socket;
-		if (isTLS === 'yes' || isTLS === 'true') {
+		if (typeof(isTLS) === 'boolean' && isTLS || typeof(isTLS) === 'string' && (isTLS === 'yes' || isTLS === 'true')) {
 			socket = tls.connect(port, host, client.options, () => {
 				callback(...authOptions);
     });
