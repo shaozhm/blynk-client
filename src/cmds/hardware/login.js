@@ -18,6 +18,7 @@ const basic= (...callbackCommands) => (options) => {
   const {
     host: envHost,
     port: envPort,
+    tls,
   } = process.env;
 
   const host = optionHost ? optionHost : envHost;
@@ -28,7 +29,7 @@ const basic= (...callbackCommands) => (options) => {
     const loginCallback = (token) => {
       login.commandOnly(blynk, token);
     };
-    let p = connect(blynk, loginCallback, token);
+    let p = connect(blynk, loginCallback, tls, token);
     if (callbackCommands && Array.isArray(callbackCommands)) {
       callbackCommands.forEach((command) => {
         p = p.then(command(blynk, options));
