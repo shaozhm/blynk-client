@@ -1,6 +1,6 @@
 {
   "name": "blynk-pi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "bin/index.js",
   "bin": {
     "blynk-pi": "bin/index.js"
