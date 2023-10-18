@@ -3,10 +3,6 @@ const {
   SEND_TIMEOUT,
 } = require('../send');
 
-const {
-  sendLogin,
-} = require('../connect');
-
 const COMMAND_CODE = 2;
 const COMMAND_NAME = 'Login';
 const COMMAND_LABEL = 'LOGIN';
