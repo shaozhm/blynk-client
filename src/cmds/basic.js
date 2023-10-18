@@ -6,14 +6,23 @@ const {
 
 const basic= (...callbackCommands) => (options) => {
   console.debug(options);
-  const {
-    username,
-    password,
-    host,
-    port,
-    tls,
-    appname,
-  } = process.env;
+  let username, password, host, port, tls, appname;
+  if (options && options.login) {
+    username = options.login.username;
+    password = options.login.password;
+    host = options.login.host;
+    port = options.login.port;
+    tls = options.login.tls;
+    appname = options.login.appname;
+  } else {
+    username = process.env.username;
+    password = process.env.password;
+    host = process.env.host;
+    port = process.env.port;
+    tls = process.env.tls;
+    appname = process.env.appname;
+  }
+
   console.debug(username, password, host, port);
   if (username && password && host && port) {
     console.debug(username, password, host, port, appname);
