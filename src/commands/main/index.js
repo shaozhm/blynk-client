@@ -38,6 +38,10 @@ const {
   commandObject: hardware,
 } = require('./Hardware');
 
+const {
+  commandObject: ping,
+} = require('./Ping');
+
 const exportFunctions = {
   loadProfileGzipped,
   activateDashboard,
@@ -49,6 +53,7 @@ const exportFunctions = {
   getCloneCode,
   getProjectByClonedToken,
   hardware,
+  ping,
 };
 
 module.exports = exportFunctions;

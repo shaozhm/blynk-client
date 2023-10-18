@@ -39,11 +39,8 @@ const {
   getCloneCode,
   getProjectByClonedToken,
   hardware,
+  ping,
 } = require('./main');
-
-const {
-  commandObject: ping,
-} = require('./Ping');
 
 const {
   commandObject: appSync,

@@ -1,23 +1,23 @@
 const {
   send,
   SEND_TIMEOUT,
-} = require('./send');
-
+} = require('../send');
 
 const COMMAND_CODE = 6;
 const COMMAND_NAME = 'Ping';
 const COMMAND_LABEL = 'PING';
-const IS_APP_COMMAND = false;
+const IS_APP_COMMAND = true;
 
-const command = (client) => {
-  const command = `${COMMAND_NAME}`;
+const command = (client, {
+}) => {
+	const command = `${COMMAND_NAME}`;
 	return new Promise((resolve, reject) => {
 		var msgId = client.msgId;
 		client.respPromises.set(msgId, {
 			resolve,
 			reject,
 		});
-		send(client, command, COMMAND_CODE, IS_APP_COMMAND);
+		send(client, command, COMMAND_CODE, IS_APP_COMMAND, ' ');
 		client.respPromises.get(msgId).timeout = setTimeout(() => {
 			reject(`${COMMAND_NAME} timeout`);
 		}, SEND_TIMEOUT);
@@ -29,11 +29,11 @@ const commandObject = {
 	label: COMMAND_LABEL,
 	code: COMMAND_CODE,
 	isAppCommand: IS_APP_COMMAND,
-	command,
+  command,
 }
 
 const exportFunctions = {
-	commandObject,
+  commandObject,
 };
 
 module.exports = exportFunctions;
