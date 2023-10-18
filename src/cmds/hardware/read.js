@@ -10,42 +10,6 @@ const {
   basic,
 } = require('./login');
 
-// const {
-//   basic,
-// } = require('../basic');
-
-
-// const builder = {
-//   ...loginBuilder,
-//   type: {
-//     alias: 'e',
-//     describe: 'pin type',
-//     choices: ['d', 'a', 'v'],
-//     type: 'string',
-//     demandOption: true,
-//   },
-//   pin: {
-//     alias: 'i',
-//     descrive: 'pin number',
-//     type: 'int',
-//     demandOption: true,
-//   }
-// };
-
-// const builder = (yargs) => {
-//   yargs.positional('token', {
-//     describe: 'device token',
-//     type: 'string',
-//   }).positional('pinType', {
-//     describe: 'pin type',
-//     choices: ['d', 'a', 'v'],
-//     type: 'string',
-//   }).positional('pinNumber', {
-//     describe: 'pin number',
-//     type: 'number',
-//   })
-// }
-
 const builder = (yargs) => {
   yargs.positional('token', {
     describe: 'device token - controller device',

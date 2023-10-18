@@ -39,6 +39,14 @@ const {
   sharing,
 } = require('./src/commands/sharing');
 
+const {
+  basic: appBasic,
+} = require('./src/cmds/basic');
+
+const {
+  basic: hardwareBasic,
+} = require('./src/cmds/hardware/login');
+
 const exportFunctions = {
   //dashboard
   createProject,
@@ -71,6 +79,9 @@ const exportFunctions = {
   getShareToken,
   refreshShareToken,
   sharing,
+  //cmds
+  appBasic,
+  hardwareBasic,
 };
 
 module.exports = exportFunctions;
