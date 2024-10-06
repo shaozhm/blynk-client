@@ -1,9 +1,9 @@
 {
-  "name": "blynk-pi",
+  "name": "blynk-client",
   "version": "1.0.1",
   "main": "index.js",
   "bin": {
-    "blynk-pi": "bin/index.js"
+    "blynk-client": "bin/index.js"
   },
   "scripts": {
     "test": "jest"
