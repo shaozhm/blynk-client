@@ -85,11 +85,11 @@ const connect = (client, callback, isTLS, ...authOptions) => {
 		if (typeof(isTLS) === 'boolean' && isTLS || typeof(isTLS) === 'string' && (isTLS === 'yes' || isTLS === 'true')) {
 			socket = tls.connect(port, host, client.options, () => {
 				callback(...authOptions);
-    });
+    	});
 		} else {
 			socket = net.connect({host: host, port: port,}, function() {
-			callback(...authOptions);
-		});
+				callback(...authOptions);
+			});
 		}
 
 		client.respPromises.get(msgId).timeout = setTimeout(() => {
