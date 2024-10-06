@@ -22,14 +22,14 @@
   },
   "dependencies": {
     "blynk-library": "0.5.4",
-    "moment": "2.29.4",
-    "lodash": "4.17.21",
-    "yargs": "13.2",
-    "verror": "1.10.1",
     "dotenv": "8.0",
-    "uuid": "8.3.2",
+    "envfile": "6.18.0",
+    "lodash": "4.17.21",
+    "moment": "2.29.4",
     "request": "2.88.2",
+    "uuid": "8.3.2",
+    "verror": "1.10.1",
     "yaml": "2.2.1",
-    "envfile": "6.18.0"
+    "yargs": "13.2"
   }
 }
